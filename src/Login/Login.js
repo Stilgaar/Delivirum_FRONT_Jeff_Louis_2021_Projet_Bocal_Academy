@@ -4,7 +4,7 @@ import { Button, Form } from 'react-bootstrap';
 function Login() {
 
   return (
-    <Form>
+    <Form className="loginBox">
       <Form.Group className="mb-3" >
         <Form.Label>Pseudo</Form.Label>
         <Form.Control type="text" placeholder="Entre ton pseudo" />
