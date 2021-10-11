@@ -1,0 +1,23 @@
+.boxSplash1 {
+    height: 20rem;
+    width: 40rem;
+    border: 2px solid black;
+    position: absolute; 
+    top: 8rem; 
+    left: 15rem;
+}
+
+.boxSplash2 {
+    height: 40rem;
+    width: 25rem;
+    border: 2px solid black; 
+    position: absolute; 
+    top: 6rem;
+    left: 18rem;  
+}
+
+.boxTitre {
+position: absolute; 
+top: 12rem;
+left: 20rem;  
+}

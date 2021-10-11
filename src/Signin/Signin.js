@@ -4,10 +4,10 @@ import { Button, Form } from 'react-bootstrap';
 function Signin() {
 
   return (
-    <Form>
+    <Form className="signInBox">
         <Form.Group className="mb-3" >
         <Form.Label>Pseudo</Form.Label>
-        <Form.Control type="text" placeholder="Choisis ton pseudo" />
+        <Form.Control className="test" type="text" placeholder="Choisis ton pseudo" />
         </Form.Group>
       <Form.Group className="mb-3" >
         <Form.Label>Adresse email</Form.Label>
@@ -20,7 +20,7 @@ function Signin() {
         <Form.Label>Mot de passe</Form.Label>
         <Form.Control type="password" placeholder="Mot de passe" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="boutonSignin" type="submit">
         Crée ton compte
       </Button>
     </Form>

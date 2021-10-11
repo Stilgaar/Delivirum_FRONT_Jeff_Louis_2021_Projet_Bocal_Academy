@@ -1,0 +1,22 @@
+.navigation {
+background: linear-gradient(45deg, #8e3fc4, #4c0080);
+height: 2.5em;
+border-bottom:solid 1px #2d0e42;
+}
+
+.navElement {
+    text-decoration: none;
+}
+
+.navText, .navText2 {
+    color: ivory;
+} 
+
+.navText2 {
+    margin-left: 2rem;
+    box-shadow: 5px 5px 3px #2d0e42;
+    border: 0.025rem solid #1f0530;
+    border-radius: 10px;
+    padding: 0.4rem;
+    
+}

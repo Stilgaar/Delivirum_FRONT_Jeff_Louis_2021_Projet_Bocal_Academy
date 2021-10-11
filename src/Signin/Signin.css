@@ -1,0 +1,23 @@
+.signInBox {
+    width: 20%;
+    position: absolute; 
+    left: 65%;
+    top: 20%; 
+}
+
+
+.boutonSignin {
+    background-color: #4c0080;
+    border:1px solid #2d0e42;
+    color: ivory;
+}
+.boutonSignin:hover {
+    background-color: #8e3fc4;
+    border:1px solid #1f0530;
+    color: ivory;
+}
+
+.form-control:focus {
+    border-color: #7b6888;
+    box-shadow: inset 0 1px 1px #7b6888, 0 0 8px #4c0080;
+  }

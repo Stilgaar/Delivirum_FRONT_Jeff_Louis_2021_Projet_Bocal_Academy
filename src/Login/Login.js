@@ -13,7 +13,7 @@ function Login() {
         <Form.Label>Mot de passe</Form.Label>
         <Form.Control type="password" placeholder="Mot de passe" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="boutonLogin" type="submit">
         Valider
       </Button>
     </Form>
