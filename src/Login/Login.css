@@ -3,6 +3,9 @@
     position: absolute; 
     left: 65%;
     top: 20%; 
+    border-radius: 15px;
+    box-shadow: 10px 3px 20px #4c0080;
+    padding: 1.5rem;
 }
 
 .boutonLogin {
