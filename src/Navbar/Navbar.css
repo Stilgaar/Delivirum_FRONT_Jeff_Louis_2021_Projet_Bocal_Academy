@@ -14,6 +14,7 @@ border-bottom:solid 1px #2d0e42;
 
 .navText2 {
     margin-left: 2rem;
+    background: linear-gradient(45deg, #4c0080, #8e3fc4);
     box-shadow: 5px 5px 3px #2d0e42;
     border: 0.025rem solid #1f0530;
     border-radius: 10px;

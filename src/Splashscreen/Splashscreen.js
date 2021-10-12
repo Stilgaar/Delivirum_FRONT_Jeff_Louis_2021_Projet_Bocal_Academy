@@ -5,7 +5,7 @@ function Splashscreen() {
     return (
         <div>
             <div className="boxTitre">
-                <h1>CatchPhrase
+                <h1 className="titreSplash">CatchPhrase +
                     <br />
                     Slogan de Dingue !
                 </h1>

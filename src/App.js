@@ -21,6 +21,7 @@ function App() {
           </Route>
           <Route path="/Signin">
             <Signin />
+            <Splashscreen />
           </Route>
         </Switch>
 

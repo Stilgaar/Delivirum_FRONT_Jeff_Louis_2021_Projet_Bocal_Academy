@@ -6,14 +6,18 @@
 }
 
 .boutonLogin {
-    background-color: #4c0080;
+    background: linear-gradient(45deg, #8e3fc4, #4c0080);
     border:1px solid #2d0e42;
     color: ivory;
 }
 .boutonLogin:hover {
-    background-color: #8e3fc4;
+    background: linear-gradient(105deg, #8e3fc4, #4c0080);
     border:1px solid #1f0530;
     color: ivory;
+}
+
+.form-control {
+    border: 0.1rem solid #4c0080;
 }
 
 .form-control:focus {
