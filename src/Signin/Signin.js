@@ -9,10 +9,9 @@ function Signin() {
   const [password, setPassword] = useState();
   
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    let submit = { pseudo, email, password }
-
-    return fetch('http://localhost:5000/users', {
+    let submit = await { pseudo, email, password }
+    return fetch( 'http://localhost:5000/users'      
+      ,{
       method: 'POST',
       body: JSON.stringify(submit),
       headers: {
@@ -46,7 +45,7 @@ function Signin() {
         <Form.Label>Mot de passe</Form.Label>
         <Form.Control type="password" placeholder="Mot de passe" name="password" onInput={(e) => handleInput(e, setPassword)} />
       </Form.Group>
-      <Button className="boutonSignin" type="submit" onClick={() => handleSubmit()}>
+      <Button className="boutonSignin" onClick={() => handleSubmit()}>
         Crée ton compte
       </Button>
     </Form>
