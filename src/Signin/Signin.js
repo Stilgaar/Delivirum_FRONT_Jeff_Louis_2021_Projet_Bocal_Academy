@@ -7,29 +7,28 @@ function Signin() {
   const [pseudo, setPseudo] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [submit, setSubmit] = useState([]);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmit([...submit, { pseudo, email, password }])
+    let submit = { pseudo, email, password }
+
     // Fonctionnement de la fonction Fetch, ouais c'est comme ça, apparement faut pas chercher
     // c'est un peu comme la fonction map, c'est comme ça, puis c'est comme ça.
     // déjà 'fetch' en lui même je le trouve très mauvais comme mot pour notre cas !
     // elle t'indique donc OU du dois fetcher, la methode, ce qu'elle doit envoyer et le headers,
     // bha c'est comme ça, faut pas chercher.
-    return fetch('http://localhost:5000/user', {
+
+    return fetch('http://localhost:5000/contact', {
       method: 'POST',
       body: JSON.stringify(submit),
       headers: {
         'Content-Type': 'application/json'
       }
     }
-    )
+  )
       .then(res => res.json())
       .then(data => console.log(data));
-
-  }
-
+}
 
   //Fonction Callback sur les inputs du formulaire
   function handleInput(e, setter) {
