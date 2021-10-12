@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from './Navbar/Navbar'
 import Login from './Login/Login'
 import Signin from './Signin/Signin'
+import Footer from './Footer/Footer'
 import Splashscreen from './Splashscreen/Splashscreen';
 
 
@@ -24,7 +25,7 @@ function App() {
             <Splashscreen />
           </Route>
         </Switch>
-
+        <Footer />
       </Router>
     </div>
   );

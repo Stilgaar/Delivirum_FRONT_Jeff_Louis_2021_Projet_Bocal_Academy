@@ -1,0 +1,17 @@
+.footerBox{
+
+    height: 1.5rem; 
+    background: linear-gradient(45deg, #4c0080, #8e3fc4);
+    width: 100%;
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    font-weight: bolder;
+}
+
+.texteFoot {
+    color: ivory;
+    font-size: 12px;
+    margin:auto;
+    margin-left: 2%;
+}

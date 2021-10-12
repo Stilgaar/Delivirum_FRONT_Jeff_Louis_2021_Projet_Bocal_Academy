@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap';
 
 function Login() {
 
+
   return (
     <Form className="loginBox">
       <Form.Group className="mb-3" >
@@ -13,10 +14,11 @@ function Login() {
         <Form.Label>Mot de passe</Form.Label>
         <Form.Control type="password" placeholder="Mot de passe" />
       </Form.Group>
-      <Button className="boutonLogin" type="submit">
+      <Button className="boutonLogin">
         Valider
       </Button>
     </Form>
+    
   );
 }
 

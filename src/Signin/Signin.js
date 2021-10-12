@@ -16,9 +16,8 @@ function Signin() {
       body: JSON.stringify(submit),
       headers: {
         'Content-Type': 'application/json'
-      }
-    }
-  )
+    } } )
+    
       .then(res => res.json())
       .then(data => console.log(data));
 }
