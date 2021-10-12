@@ -12,7 +12,6 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmit([...submit, { pseudo, email, password }])
-
     // Fonctionnement de la fonction Fetch, ouais c'est comme ça, apparement faut pas chercher
     // c'est un peu comme la fonction map, c'est comme ça, puis c'est comme ça.
     // déjà 'fetch' en lui même je le trouve très mauvais comme mot pour notre cas !
