@@ -8,6 +8,8 @@ import Signin from './Signin/Signin'
 import Footer from './Footer/Footer'
 import Splashscreen from './Splashscreen/Splashscreen';
 import RGPD from './Rgpd/Rgpd'
+import Contact from './Contact/Contact'
+import Homepage from './Homepage/Homepage'
 
 
 function App() {
@@ -27,6 +29,9 @@ function App() {
           </Route>
           <Route path="/RGPD">
           <RGPD />
+          </Route>
+          <Route path="/Homepage">
+            <Homepage />
           </Route>
         </Switch>
         <Footer />
