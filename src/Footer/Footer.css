@@ -1,17 +1,39 @@
-.footerBox{
-
-    height: 1.5rem; 
+footer {
+    color: ivory; 
+    height: 2rem; 
     background: linear-gradient(45deg, #4c0080, #8e3fc4);
     width: 100%;
-    position: absolute; 
+    position: fixed; 
     bottom: 0;
     left: 0;
     font-weight: bolder;
+    
+}
+
+.footerBox{
+    display: flex;
+    justify-content: space-between;
 }
 
 .texteFoot {
-    color: ivory;
     font-size: 12px;
     margin:auto;
-    margin-left: 2%;
+    margin-left: 10%;
+    width: max-content;
 }
+
+.linkBox {
+    font-size: 12px;
+    width: 10%;
+    display:flex;
+}
+
+.linkFoot {
+        margin-left: 5%;
+        text-decoration: none;
+        color: ivory;
+    }
+
+
+
+

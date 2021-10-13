@@ -1,4 +1,5 @@
 import './Footer.css'
+import { Link } from "react-router-dom";
 
 function Footer() {
 
@@ -6,9 +7,17 @@ function Footer() {
 
         <footer className="footerBox">
             <div>
-                <p className="texteFoot">Louis &#x00026; Jeff Pour le 
+                <div className="texteFoot">Louis &#x00026; Jeff Pour le 
                     Bocal Academy &#x0003C;3
-                </p>
+                </div>
+            </div>
+            <div className="linkBox">
+                <div>
+                   <Link className="linkFoot" to="/Concact"> Contact </Link>
+                </div>
+                
+         <Link className="linkFoot" to="/RGPD">RGPD</Link>
+                
             </div>
         </footer>
 

@@ -7,6 +7,7 @@ import Login from './Login/Login'
 import Signin from './Signin/Signin'
 import Footer from './Footer/Footer'
 import Splashscreen from './Splashscreen/Splashscreen';
+import RGPD from './Rgpd/Rgpd'
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           <Route path="/Signin">
             <Signin />
             <Splashscreen />
+          </Route>
+          <Route path="/RGPD">
+          <RGPD />
           </Route>
         </Switch>
         <Footer />
