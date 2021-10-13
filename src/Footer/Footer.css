@@ -1,4 +1,5 @@
 footer {
+    padding: 0.5rem;
     color: ivory; 
     height: 2rem; 
     background: linear-gradient(45deg, #4c0080, #8e3fc4);
@@ -13,6 +14,7 @@ footer {
 .footerBox{
     display: flex;
     justify-content: space-between;
+    
 }
 
 .texteFoot {
