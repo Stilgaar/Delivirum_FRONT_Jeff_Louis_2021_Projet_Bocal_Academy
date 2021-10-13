@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
 .boxSplash1 {
     height: 20rem;
     width: 40rem;
@@ -19,5 +21,11 @@
 .boxTitre {
 position: absolute; 
 top: 12rem;
-left: 20rem;  
+left: 23rem;  
+}
+
+.titreSplash {
+    font-family: 'Yellowtail', cursive;
+    color: #4c0080;
+    font-weight: bolder;
 }

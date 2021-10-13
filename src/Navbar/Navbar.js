@@ -15,7 +15,7 @@ function Navigation() {
                 <Container>
                     <Navbar.Brand>
                         <Link className="navElement" to="./">
-                            <span className="navText">De-Livre-Ium</span>
+                            <span className="navText">De~Livre~ium</span>
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle />
