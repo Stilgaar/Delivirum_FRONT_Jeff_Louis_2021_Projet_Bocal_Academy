@@ -1,5 +1,6 @@
 //Importation du css et des dépendances
 import './App.css';
+import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //Importation des composants
 import Navigation from './Navbar/Navbar'
@@ -12,13 +13,15 @@ import RGPD from './Rgpd/Rgpd'
 
 function App() {
 
+  const [isLog, setIsLog] = useState(false);
+
   return (
     <div>
       <Router>
-        <Navigation />
+        <Navigation isLog={isLog} setIsLog={setIsLog} />
         <Switch>
           <Route exact path="/">
-            <Login />
+            <Login isLog={isLog} setIsLog={setIsLog} />
             <Splashscreen />
           </Route>
           <Route path="/Signin">
@@ -26,7 +29,7 @@ function App() {
             <Splashscreen />
           </Route>
           <Route path="/RGPD">
-          <RGPD />
+            <RGPD />
           </Route>
         </Switch>
         <Footer />
