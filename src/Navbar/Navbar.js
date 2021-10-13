@@ -44,7 +44,7 @@ function Navigation({ isLog, setIsLog }) {
                         <Navbar.Toggle />
                         <Navbar.Text>
                             <Navbar.Collapse className="justify-content-end">
-                                <Link className="navElement" to="./">
+                                <Link className="navElement" to="./Login">
                                     <span className="navText2">Login</span>
                                 </Link>
                                 <Link className="navElement" to="./Signin">

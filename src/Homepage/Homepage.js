@@ -3,7 +3,7 @@ import './Homepage.css';
 import { useState } from "react";
 
 
-function Homepage() {
+function Homepage({isLog, setIl}) {
 
     const [postsList, setPostsList] = useState([]);
 
@@ -12,6 +12,8 @@ function Homepage() {
 
     return(
 
+        <div>
+            {isLog ?
         <div className="post-card">
             <div className="post-title">
                 <h3>title</h3>
@@ -19,15 +21,12 @@ function Homepage() {
             <div className="post-critic">
                 <p>critic</p>
             </div>
-
+            
+        </div> 
+       : <div>LOL</div>
+}       
         </div>
-
-
-
-
     )
-
-
 }
 
 export default Homepage;

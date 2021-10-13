@@ -9,24 +9,32 @@ function Login({ isLog, setIsLog }) {
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
 
-  const handleClick = () => {
+  const token = localStorage.getItem("token");
 
-    let submit = { pseudo, password }
+
+  const handleClick = () => {
+    
+    let submit = { pseudo, password, token }
 
      fetch('http://localhost:5000/users/login', {
       method: 'POST',
       body: JSON.stringify(submit),
       headers: {
         'Content-Type': 'application/json'
-      }
-    })
+      },   
+     })
       .then((res) => {
+        console.log(res)
         if (res.status === 200) {
           setIsLog(true)
+          document.location.replace('/');
+
         } else {
-          alert("Mot de passe ou Pseudo incorrect")
+          alert(`Mauvais mot de passe 
+                  ou Mauvais Pseudo`)
         }
-      } )
+      }
+    )
   }
 
   // LA SEXYYY HOT FUNCTION

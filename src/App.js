@@ -22,19 +22,20 @@ function App() {
       <Router>
         <Navigation isLog={isLog} setIsLog={setIsLog} />
         <Switch>
-          <Route exact path="/">
-            <Login isLog={isLog} setIsLog={setIsLog} />
+          <Route exact path="/" >
+            <Homepage isLog={isLog} />
             <Splashscreen />
           </Route>
+          <Route path="/Login">
+          <Login isLog={isLog} setIsLog={setIsLog} />
+          <Splashscreen />
+            </Route>
           <Route path="/Signin">
             <Signin />
             <Splashscreen />
           </Route>
           <Route path="/RGPD">
             <RGPD />
-          </Route>
-          <Route path="/Homepage">
-            <Homepage />
           </Route>
         </Switch>
         <Footer />
