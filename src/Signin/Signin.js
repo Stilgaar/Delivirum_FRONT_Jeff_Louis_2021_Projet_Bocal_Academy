@@ -10,11 +10,11 @@ function Signin() {
   const [password, setPassword] = useState();
   const [verifPassword, setverifPassword] = useState();
 
-  const handleClick = async (e) => {
+  const handleSumbit = async (e) => {
 
     // récupére les inputs dans le body
 
-    let submit = { pseudo, email, password, verifPassword }
+    let submit = await { pseudo, email, password, verifPassword }
 
     // FONCTION FETCH 
     // ça t'envoie sur la route que tu veux utiliser. 
@@ -23,8 +23,7 @@ function Signin() {
     // le Hearders, faut pas se poser de questions, c'est juste comme ça.
 
     return fetch(
-      'http://localhost:5000/users'
-    ,{
+      'http://localhost:5000/users', {
       method: 'POST',
       body: JSON.stringify(submit),
       headers: {
@@ -63,7 +62,7 @@ function Signin() {
         <Form.Label><span className="labelSign"> Veuillez verifier votre mot de passe</span></Form.Label>
         <Form.Control type="password" placeholder="Confirmer le mot de passe" name="verifPassword" onInput={(e) => handleInput(e, setverifPassword)} />
       </Form.Group>
-      <Button className="boutonSignin" onClick={() => handleClick()}>
+      <Button className="boutonSignin" onClick={() => handleSumbit()}>
         Crée ton compte
       </Button>
     </Form>
