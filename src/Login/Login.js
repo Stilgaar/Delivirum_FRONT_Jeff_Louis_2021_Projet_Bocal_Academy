@@ -16,7 +16,7 @@ const handleClick = async() => {
   return fetch('http://localhost:5000/users/login' ,
 
 
-  { method: 'GET',
+  { method: 'POST',
     body: JSON.stringify(submit),
     headers: {
       'Content-Type': 'application/json'
