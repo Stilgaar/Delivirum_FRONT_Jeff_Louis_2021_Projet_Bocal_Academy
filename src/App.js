@@ -24,18 +24,22 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Homepage isLog={isLog} />
-            <Splashscreen />
+            <Splashscreen isLog={isLog} setIsLog={setIsLog}/>
+            <Login isLog={isLog} setIsLog={setIsLog} />
           </Route>
           <Route path="/Login">
-          <Login isLog={isLog} setIsLog={setIsLog} />
-          <Splashscreen />
-            </Route>
+            <Login isLog={isLog} setIsLog={setIsLog} />
+            <Splashscreen isLog={isLog} setIsLog={setIsLog} />
+          </Route>
           <Route path="/Signin">
             <Signin />
-            <Splashscreen />
+            <Splashscreen isLog={isLog} setIsLog={setIsLog} />
           </Route>
           <Route path="/RGPD">
             <RGPD />
+          </Route>
+          <Route path="/Contact">
+            <Contact />
           </Route>
         </Switch>
         <Footer />

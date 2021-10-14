@@ -6,6 +6,7 @@
     border-radius: 15px;
     box-shadow: 5px 3px 10px #4c0080;
     padding: 1.5rem;
+    z-index: 9000;
 }
 
 .boutonLogin {

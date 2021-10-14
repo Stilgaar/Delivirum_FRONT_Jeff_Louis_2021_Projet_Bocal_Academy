@@ -22,8 +22,6 @@ function Signin() {
     // le minimum syndical pour qu'il fonctionne c'est la method, le stringify parce qu'il envoie sur un json et headers.
     // le Hearders, faut pas se poser de questions, c'est juste comme ça.
 
-
-    //La refaire avec les exemples pages 12,13,14
     return fetch(
       'http://localhost:5000/users', {
       method: 'POST',
