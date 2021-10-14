@@ -1,6 +1,7 @@
 //Charement des CSS et dépendances
 import "./Homepage.css";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 function Homepage({ isLog, setIsLog }) {
   const [postsList, setPostsList] = useState([]);
@@ -14,10 +15,21 @@ function Homepage({ isLog, setIsLog }) {
         <div className="post-card">
           <div className="post-content">
             <div className="post-title">
-              <h3>title</h3>
+              <h2 className="titreCrit">Placeholder : Critique Title</h2>
             </div>
             <div className="post-critic">
-              <p>critic</p>
+              <div className="laCrit">PlaceHoder Critique</div>
+            </div>
+            <div className="commentCrit">
+              <form>
+
+                <label>Quelque chose à dire ?</label>
+                <input type="text" name="commentaire" placeholder="Send Salt" />
+                <Button className="buttonCrit">
+                  Envoyer ton commentaire !
+                </Button>
+
+              </form>
             </div>
           </div>
         </div>

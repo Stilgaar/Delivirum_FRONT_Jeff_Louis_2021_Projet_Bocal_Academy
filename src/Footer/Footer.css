@@ -1,3 +1,9 @@
+body {
+
+    position: relative;
+    height: 120vh;
+}
+
 footer {
     padding: 0.5rem;
     color: ivory; 
@@ -8,7 +14,7 @@ footer {
     bottom: 0;
     left: 0;
     font-weight: bolder;
-    
+    clear: both;
 }
 
 .footerBox{

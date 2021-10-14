@@ -31,6 +31,9 @@ function Navigation({ isLog, setIsLog }) {
                                 <Link className="navElement" to="./Profil">
                                     <span className="navText2">Profil</span>
                                 </Link>
+                                <Link className="navElement" to="./Logout">
+                                    <span className="navText2">Log Out</span>
+                                </Link>
                             </Navbar.Collapse>
                         </Navbar.Text>
                     </Container>

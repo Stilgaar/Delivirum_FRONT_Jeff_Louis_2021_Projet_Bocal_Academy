@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Footer() {
 
     return (
-
+<div id="main">
         <footer className="footerBox">
             <div>
                 <div className="texteFoot">Louis &#x00026; Jeff Pour le 
@@ -20,7 +20,7 @@ function Footer() {
                 
             </div>
         </footer>
-
+        </div>
     )
 
 }

@@ -16,15 +16,9 @@ import { useState } from "react"
 // faire un peu de css pour se détendre
 // ou mourir
 // Je suis AFK Loïs, parti prendre l'air
-// MUCH LOVE <3 <3 <3 
-function getInfos() {
-   return fetch("http://localhost:5000/users/id", {
-  }).then((response) => { 
-    console.log(response)
-} );
-}
-
+// MUCH LOVE <3 <3 <
 function NewCrit() {
+
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
 

@@ -12,6 +12,7 @@ import RGPD from './Rgpd/Rgpd'
 import Contact from './Contact/Contact'
 import Homepage from './Homepage/Homepage'
 import NewCrit from './NewCrit/NewCrit';
+import Profil from './Profil/Profil';
 
 
 function App() {
@@ -82,6 +83,9 @@ function App() {
           <Route exact path="/Homepage">
             <Homepage isLog={isLog} setIsLog={setIsLog} />
           </Route>
+          <Route path="/Profil">
+  <Profil />
+</Route>
           <Route path="/RGPD">
             <RGPD />
           </Route>

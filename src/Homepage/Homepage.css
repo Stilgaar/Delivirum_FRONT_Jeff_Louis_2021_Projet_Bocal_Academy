@@ -9,3 +9,39 @@
 
 }
 
+.titreCrit {
+    color: #2d0e42;
+    margin: auto;   
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 4%;
+
+}
+
+.laCrit {
+    box-shadow: 5px 3px 10px #2d0e42;
+    width: max-content;
+    border-radius: 10px;
+    padding: 0.5vw;
+    margin: auto; 
+}
+
+.commentCrit {
+    margin-top: 2%;
+    display: flex; 
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.buttonCrit {
+    background: linear-gradient(45deg, #8e3fc4, #4c0080);
+    border:1px solid #2d0e42;
+    color: ivory;
+    margin-left: 2%;   
+}
+
+.buttonCrit:hover {
+    background: linear-gradient(105deg, #8e3fc4, #4c0080);
+    border:1px solid #1f0530;
+    color: ivory;
+}
