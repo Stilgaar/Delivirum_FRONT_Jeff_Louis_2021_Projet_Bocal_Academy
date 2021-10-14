@@ -11,6 +11,7 @@ import Splashscreen from './Splashscreen/Splashscreen';
 import RGPD from './Rgpd/Rgpd'
 import Contact from './Contact/Contact'
 import Homepage from './Homepage/Homepage'
+import NewCrit from './NewCrit/NewCrit';
 
 
 function App() {
@@ -81,6 +82,9 @@ function App() {
           </Route>
           <Route path="/Contact">
             <Contact />
+          </Route>
+          <Route path="/Critique">
+            <NewCrit />
           </Route>
         </Switch>
         <Footer />

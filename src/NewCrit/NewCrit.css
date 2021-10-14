@@ -1,0 +1,31 @@
+.newCrit-box {
+    width: 50vw;
+    margin: auto;
+    margin-top: 10vh;
+    border: 2px solid #4c0080;
+    border-radius: 10px;
+    padding: 2vw;
+    box-shadow: 5px 3px 10px #4c0080;
+
+
+}
+
+.newCritH2 {
+    color: #2d0e42;
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
+
+.boutonNewCrit {
+    background: linear-gradient(45deg, #8e3fc4, #4c0080);
+    border:1px solid #2d0e42;
+    color: ivory;
+    margin-left: 80%;
+    margin-top: 3%;
+}
+
+.boutonNewCrit:hover {
+    background: linear-gradient(105deg, #8e3fc4, #4c0080);
+    border:1px solid #1f0530;
+    color: ivory;
+}

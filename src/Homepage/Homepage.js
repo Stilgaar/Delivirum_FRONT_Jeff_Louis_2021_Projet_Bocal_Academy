@@ -3,7 +3,7 @@ import './Homepage.css';
 import { useState } from "react";
 
 
-function Homepage({isLog, setIl}) {
+function Homepage({isLog, setIsLog}) {
 
     const [postsList, setPostsList] = useState([]);
 
