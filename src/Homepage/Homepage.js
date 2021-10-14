@@ -1,32 +1,31 @@
 //Charement des CSS et dépendances
-import './Homepage.css';
+import "./Homepage.css";
 import { useState } from "react";
 
+function Homepage({ isLog, setIsLog }) {
+  const [postsList, setPostsList] = useState([]);
 
-function Homepage({isLog, setIsLog}) {
+  const [title, setTitle] = useState();
+  const [critic, setCritic] = useState();
 
-    const [postsList, setPostsList] = useState([]);
-
-    const [title, setTitle] = useState();
-    const [critic, setCritic] = useState();
-
-    return(
-
-        <div>
-            {isLog ?
+  return (
+    <div>
+      {isLog ? (
         <div className="post-card">
+          <div className="post-content">
             <div className="post-title">
-                <h3>title</h3>
+              <h3>title</h3>
             </div>
             <div className="post-critic">
-                <p>critic</p>
+              <p>critic</p>
             </div>
-            
-        </div> 
-       : <div></div>
-}       
+          </div>
         </div>
-    )
+      ) : (
+        <div></div>
+      )}
+    </div>
+  );
 }
 
 export default Homepage;

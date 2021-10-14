@@ -65,9 +65,12 @@ function App() {
         <Navigation isLog={isLog} setIsLog={setIsLog} />
         <Switch>
           <Route exact path="/" >
-            <Homepage isLog={isLog} />
+            <Homepage isLog={isLog} setIsLog={setIsLog} />
             <Splashscreen isLog={isLog} setIsLog={setIsLog} />
             <Login isLog={isLog} setIsLog={setIsLog} />
+          </Route>
+          <Route path="/Homepage">
+            <Homepage isLog={isLog} setIsLog={setIsLog}/>
           </Route>
           <Route path="/Login">
            {isLog !== null &&  <Login isLog={isLog} setIsLog={setIsLog} /> }
