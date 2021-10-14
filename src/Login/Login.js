@@ -2,19 +2,17 @@ import "./Login.css";
 import { Button, Form } from 'react-bootstrap';
 import { useState } from "react";
 
-
 function Login({ isLog, setIsLog }) {
 
   // Nos petites constantes d'état qui vont bient
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
 
-  const token = localStorage.getItem("token");
-
 
   const handleClick = () => {
+
     
-    let submit = { pseudo, password, token }
+    let submit = { pseudo, password, }
 
      fetch('http://localhost:5000/users/login', {
       method: 'POST',
@@ -23,9 +21,15 @@ function Login({ isLog, setIsLog }) {
         'Content-Type': 'application/json'
       }
      }).then(res => res.json())
-      .then((res) =>{
+      .then((json) =>{
         console.log(res)
+        localStorage.setItem("token", json.token);
+        setIsLog(true)
+        history.push("/");
       }) 
+      .catch((err) => console.log(err));
+
+
   }
 
   // LA SEXYYY HOT FUNCTION
