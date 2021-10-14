@@ -21,20 +21,11 @@ function Login({ isLog, setIsLog }) {
       body: JSON.stringify(submit),
       headers: {
         'Content-Type': 'application/json'
-      },   
-     })
-      .then((res) => {
-        console.log(res)
-        if (res.status === 200) {
-          setIsLog(true)
-          document.location.replace('/');
-
-        } else {
-          alert(`Mauvais mot de passe 
-                  ou Mauvais Pseudo`)
-        }
       }
-    )
+     }).then(res => res.json())
+      .then((res) =>{
+        console.log(res)
+      }) 
   }
 
   // LA SEXYYY HOT FUNCTION
