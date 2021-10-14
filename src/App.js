@@ -46,12 +46,11 @@ function App() {
 
   useEffect(() => {
     if (token === null) return;
-    if (token === false) 
-    {
+    if (token === false) {
       setUser({});
       setIsLog(false);
       return;
-    } 
+    }
     setIsLog(true)
     getInfos()
       .then((serverResponse) => setUser(serverResponse))
@@ -65,17 +64,20 @@ function App() {
         <Navigation isLog={isLog} setIsLog={setIsLog} />
         <Switch>
           <Route exact path="/" >
-            <Homepage isLog={isLog} />
+            <Homepage isLog={isLog} setIsLog={setIsLog} />
             <Splashscreen isLog={isLog} setIsLog={setIsLog} />
             <Login isLog={isLog} setIsLog={setIsLog} />
           </Route>
           <Route path="/Login">
-           {isLog !== null &&  <Login isLog={isLog} setIsLog={setIsLog} /> }
-           {isLog !== null &&<Splashscreen isLog={isLog} setIsLog={setIsLog} />}
+            {isLog !== null && <Login isLog={isLog} setIsLog={setIsLog} />}
+            {isLog !== null && <Splashscreen isLog={isLog} setIsLog={setIsLog} />}
           </Route>
           <Route path="/Signin">
             <Signin />
             <Splashscreen isLog={isLog} setIsLog={setIsLog} />
+          </Route>
+          <Route exact path="/Homepage">
+            <Homepage isLog={isLog} setIsLog={setIsLog} />
           </Route>
           <Route path="/RGPD">
             <RGPD />
@@ -84,7 +86,7 @@ function App() {
             <Contact />
           </Route>
           <Route path="/Critique">
-            <NewCrit />
+            <NewCrit user={user} />
           </Route>
         </Switch>
         <Footer />
