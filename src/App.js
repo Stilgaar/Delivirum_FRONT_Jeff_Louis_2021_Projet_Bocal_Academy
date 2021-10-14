@@ -68,6 +68,9 @@ function App() {
             <Splashscreen isLog={isLog} setIsLog={setIsLog} />
             <Login isLog={isLog} setIsLog={setIsLog} />
           </Route>
+          <Route path="/Homepage">
+            <Homepage isLog={isLog} setIsLog={setIsLog}/>
+          </Route>
           <Route path="/Login">
             {isLog !== null && <Login isLog={isLog} setIsLog={setIsLog} />}
             {isLog !== null && <Splashscreen isLog={isLog} setIsLog={setIsLog} />}
