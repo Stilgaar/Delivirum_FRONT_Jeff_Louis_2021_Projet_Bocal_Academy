@@ -40,9 +40,7 @@ function Login({ isLog, setIsLog, token, setToken }) {
 
   return (
     <div>
-      {isLog ? (
-        <div></div>
-      ) : (
+    {isLog === false && 
         <Form className="loginBox">
           <Form.Group className="mb-3">
             <Form.Label>
@@ -67,8 +65,13 @@ function Login({ isLog, setIsLog, token, setToken }) {
           <Button className="boutonLogin" onClick={() => handleClick()}>
             Valider
           </Button>
-        </Form>
-      )}
+        </Form> 
+        }
+      {isLog === true && <div>connecté</div>
+      }
+      
+        
+      
     </div>
   );
 }

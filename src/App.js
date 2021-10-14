@@ -16,14 +16,14 @@ import Homepage from './Homepage/Homepage'
 function App() {
 
   const [user, setUser] = useState({});
-  const [isLog, setIsLog] = useState(false);
+  const [isLog, setIsLog] = useState(null);
   const [token, setToken] = useState(null);
 
   const isLoggedIn = token !== null;
 
   function getInfos() {
     let token = localStorage.getItem("token");
-  
+
     return fetch("http://localhost:5000/users/infos", {
       method: "GET",
       headers: {
@@ -32,21 +32,29 @@ function App() {
       },
     }).then((response) => response.json());
   }
-  
+
 
   useEffect(() => {
     let tokenFromLocalStorage = localStorage.getItem("token");
+    if (tokenFromLocalStorage === null) {
+      setToken(false)
+      return;
+    }
     setToken(tokenFromLocalStorage);
   }, []);
 
   useEffect(() => {
-    if (token === null) {
+    if (token === null) return;
+    if (token === false) 
+    {
       setUser({});
+      setIsLog(false);
       return;
-    }
+    } 
+    setIsLog(true)
     getInfos()
-    .then((serverResponse) => setUser(serverResponse))
-    .catch((err) => console.log(err));
+      .then((serverResponse) => setUser(serverResponse))
+      .catch((err) => console.log(err));
   }, [token]);
 
 
@@ -57,12 +65,12 @@ function App() {
         <Switch>
           <Route exact path="/" >
             <Homepage isLog={isLog} />
-            <Splashscreen isLog={isLog} setIsLog={setIsLog}/>
+            <Splashscreen isLog={isLog} setIsLog={setIsLog} />
             <Login isLog={isLog} setIsLog={setIsLog} />
           </Route>
           <Route path="/Login">
-            <Login isLog={isLog} setIsLog={setIsLog} />
-            <Splashscreen isLog={isLog} setIsLog={setIsLog} />
+           {isLog !== null &&  <Login isLog={isLog} setIsLog={setIsLog} /> }
+           {isLog !== null &&<Splashscreen isLog={isLog} setIsLog={setIsLog} />}
           </Route>
           <Route path="/Signin">
             <Signin />
