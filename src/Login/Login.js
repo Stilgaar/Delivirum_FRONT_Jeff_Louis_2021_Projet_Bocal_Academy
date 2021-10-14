@@ -1,14 +1,20 @@
 import "./Login.css";
 import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
+import { useHistory} from "react-router-dom";
 
-function Login({ isLog, setIsLog }) {
+function Login({ isLog, setIsLog, token, setToken }) {
   // Nos petites constantes d'état qui vont bient
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
+  const history = useHistory()
 
   const handleClick = () => {
     let submit = { pseudo, password };
+
+    if(token == true) {
+      history.push("/");
+    }
 
     fetch("http://localhost:5000/users/login", {
       method: "POST",
@@ -19,8 +25,8 @@ function Login({ isLog, setIsLog }) {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(res);
-        localStorage.setItem("token", json.token);
+        console.log(json);
+        localStorage.setItem("token", json.token); // <--- entrée du token dans le localStorage pour pouvoir le récup dans les autres composants
         setIsLog(true);
         history.push("/");
       })
