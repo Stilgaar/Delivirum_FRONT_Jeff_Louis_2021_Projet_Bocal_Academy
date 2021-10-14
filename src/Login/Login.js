@@ -14,7 +14,7 @@ function Login({ isLog, setIsLog }) {
 
   const handleClick = () => {
     
-    let submit = { pseudo, password, token }
+    let submit = { pseudo, password }
 
      fetch('http://localhost:5000/users/login', {
       method: 'POST',
@@ -24,10 +24,10 @@ function Login({ isLog, setIsLog }) {
       },   
      })
       .then((res) => {
-        console.log(res)
+        console.log(res.data)
         if (res.status === 200) {
           setIsLog(true)
-          document.location.replace('/');
+          // document.location.replace('/');
 
         } else {
           alert(`Mauvais mot de passe 
@@ -43,6 +43,10 @@ function Login({ isLog, setIsLog }) {
   }
 
   return (
+
+    <div>
+      {isLog ? <div></div>
+      :
     <Form className="loginBox">
       <Form.Group className="mb-3" >
         <Form.Label><span className="labelLog">Pseudo</span></Form.Label>
@@ -56,6 +60,8 @@ function Login({ isLog, setIsLog }) {
         Valider
       </Button>
     </Form>
+}
+    </div>
   );
 }
 

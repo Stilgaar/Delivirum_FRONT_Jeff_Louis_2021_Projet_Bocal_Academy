@@ -23,7 +23,7 @@ function Homepage({isLog, setIl}) {
             </div>
             
         </div> 
-       : <div>LOL</div>
+       : <div></div>
 }       
         </div>
     )

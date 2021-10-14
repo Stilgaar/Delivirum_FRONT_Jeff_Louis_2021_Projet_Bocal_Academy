@@ -29,3 +29,7 @@ left: 23rem;
     color: #4c0080;
     font-weight: bolder;
 }
+
+.splash {
+    z-index: 1;
+}

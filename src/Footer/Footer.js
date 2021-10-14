@@ -13,7 +13,7 @@ function Footer() {
             </div>
             <div className="linkBox">
                 <div>
-                   <Link className="linkFoot" to="/Concact"> Contact </Link>
+                   <Link className="linkFoot" to="/Contact"> Contact </Link>
                 </div>
                 
          <Link className="linkFoot" to="/RGPD">RGPD</Link>
