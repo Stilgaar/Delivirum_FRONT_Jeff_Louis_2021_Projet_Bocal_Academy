@@ -6,7 +6,7 @@ function NewCrit() {
 
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   let token = localStorage.getItem("token")
 
   useEffect(() => {

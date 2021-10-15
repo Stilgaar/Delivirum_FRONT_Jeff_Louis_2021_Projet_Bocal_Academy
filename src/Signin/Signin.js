@@ -1,6 +1,7 @@
 import "./Signin.css";
 import { Button, Form } from 'react-bootstrap';
 import { useState } from "react";
+import { useHistory} from "react-router-dom";
 
 function Signin() {
 
@@ -9,6 +10,7 @@ function Signin() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [verifPassword, setverifPassword] = useState();
+  const history = useHistory()
 
   const handleSumbit = async (e) => {
 
@@ -31,7 +33,9 @@ function Signin() {
     } } )
         // ces lignes c'est comme le headers, c'est comme ça et puis c'est tout
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(data => {
+        console.log(data);
+        history.push("/Login")});
   }
 
   //Fonction Callback sur les inputs du formulaire
