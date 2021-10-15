@@ -6,6 +6,23 @@ import { Button } from "react-bootstrap";
 function Homepage({ isLog, setIsLog }) {
 
   const [postsList, setPostsList] = useState([]);
+  const [user, setUser] = useState([]);
+  let token = localStorage.getItem("token")
+
+
+  useEffect(() => {
+    fetch("http://localhost:5000/users/info", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      }
+    })
+      .then((res) => res.json())
+      .then((users) => {
+        setUser(users)
+      })
+  }, [])
 
   useEffect(() => {
 
@@ -28,6 +45,7 @@ function Homepage({ isLog, setIsLog }) {
             </div>
             <div className="post-critic">
               <div className="laCrit">{posts.critic}</div>
+              <div className="critCom">Ce commentaire vous a été proposé par {user.pseudo}</div>
             </div>
             <div className="commentCrit">
               <form>

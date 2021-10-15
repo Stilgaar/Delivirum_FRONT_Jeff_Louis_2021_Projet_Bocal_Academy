@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 function Profil() {
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState({pseudo : "", email : ""});
     let token = localStorage.getItem("token")
 
     useEffect(() => {
@@ -23,8 +23,8 @@ function Profil() {
         <div className="boxProfil">
             <div><h2 className="titreProfil">Informations sur mon Profil</h2></div>
 
-            <div>Pseudo : Placeholder Pseudo</div>
-            <div>Mail : PlaceHoder Email </div>
+            <div>Pseudo : {user.pseudo}</div>
+            <div>Mail : {user.email} </div>
             <div>Nan nan : Pas de Placeholder pour le mot de passe nan nan</div>
 
 

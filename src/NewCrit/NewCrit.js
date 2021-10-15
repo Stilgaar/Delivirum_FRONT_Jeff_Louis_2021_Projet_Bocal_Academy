@@ -6,7 +6,7 @@ function NewCrit() {
 
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({pseudo : "", email : ""});
   let token = localStorage.getItem("token")
 
   useEffect(() => {
@@ -71,7 +71,8 @@ function NewCrit() {
             name="critic"
             onInput={(e) => handleInput(e, setCritic)}
           />
-        </FloatingLabel>
+        </FloatingLabel> 
+        <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres </div>
         <Button className="boutonNewCrit" onClick={() => handleClick()}>
           Valider
         </Button>
