@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 function Homepage({ isLog, setIsLog }) {
 
   const [postsList, setPostsList] = useState([]);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({pseudo : "", email : ""});
   let token = localStorage.getItem("token")
 
 
@@ -37,15 +37,20 @@ function Homepage({ isLog, setIsLog }) {
 
   return (
     <div>
+      
       {isLog && (postsList.map((posts) => (
+        <div>
+        <h2 className="titreThread">Thread des Critiques Tendances</h2>
         <div className="post-card">
+          
           <div className="post-content">
+            
             <div className="post-title">
               <h2 className="titreCrit">{posts.title}</h2>
             </div>
             <div className="post-critic">
               <div className="laCrit">{posts.critic}</div>
-              <div className="critCom">Ce commentaire vous a été proposé par {user.pseudo}</div>
+              <div className="critCom">Ce commentaire vous a été proposé par {posts.currentUser}</div>
             </div>
             <div className="commentCrit">
               <form>
@@ -58,7 +63,8 @@ function Homepage({ isLog, setIsLog }) {
 
               </form>
             </div>
-          </div>
+          
+            </div></div>
         </div>)))}
     </div>
 

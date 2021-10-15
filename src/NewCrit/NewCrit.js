@@ -1,6 +1,7 @@
 import "./NewCrit.css";
 import { FloatingLabel, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom";
 
 function NewCrit() {
 
@@ -8,6 +9,10 @@ function NewCrit() {
   const [critic, setCritic] = useState();
   const [user, setUser] = useState({pseudo : "", email : ""});
   let token = localStorage.getItem("token")
+  const history = useHistory()
+
+
+  let currentUser = user.pseudo
 
   useEffect(() => {
     fetch("http://localhost:5000/users/info", {
@@ -25,7 +30,7 @@ function NewCrit() {
 
   function handleClick() {
 
-    let click = { title, critic };
+    let click = { title, critic, currentUser };
 
     fetch("http://localhost:5000/posts", {
       method: "POST",
@@ -37,9 +42,8 @@ function NewCrit() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log('teub')
-        console.log(json);
-      });
+        console.log('teub');
+        history.push("/Homepage")});
   }
   
     function handleInput(e, setter) {
