@@ -9,6 +9,14 @@ import { Link } from "react-router-dom";
 function Navigation({ isLog, setIsLog }) {
 
 
+
+    function handleLogout() {
+        localStorage.removeItem('token');
+        document.location.replace('/');
+        
+    }
+
+
     return (
         <div>
             <Navbar className="navigation">
@@ -31,8 +39,8 @@ function Navigation({ isLog, setIsLog }) {
                                 <Link className="navElement" to="./Profil">
                                     <span className="navText2">Profil</span>
                                 </Link>
-                                <Link className="navElement" to="./Logout">
-                                    <span className="navText2">Log Out</span>
+                                <Link className="navElement" >
+                                    <span className="navText2" onClick={() => handleLogout()}>Log Out</span>
                                 </Link>
                             </Navbar.Collapse>
                         </Navbar.Text>
