@@ -20,6 +20,7 @@ function Login({ isLog, setIsLog, token, setToken }) {
       method: "POST",
       body: JSON.stringify(submit),
       headers: {
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     })

@@ -1,30 +1,28 @@
 import "./NewCrit.css";
 import { FloatingLabel, Form, Button } from "react-bootstrap";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-
-
-// FONCTION POUR ALLER TOP LINFORMATION DANS LE BACK 
-// enfin je crois
-// mais j'arrive pas a sortir les infos !!!
-// JE ME DETTEESSSTTTE 
-// TODO : check une nouvelle route, avec genre /users/recup 
-// avec la fonction reqsens(req.body)
-// voir si ça marche
-// si ça marche, la rappeller ici, puis chopper les infos utilisateurs
-// ensuite les injecter en fetch via le post un peu plus bas
-// faire un peu de css pour se détendre
-// ou mourir
-// Je suis AFK Loïs, parti prendre l'air
-// MUCH LOVE <3 <3 <
 function NewCrit() {
 
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
+  const [user, setUser] = useState({});
+  let token = localStorage.getItem("token")
 
-  function handleInput(e, setter) {
-    setter(e.target.value);
-  }
+  useEffect(() => {
+    fetch("http://localhost:5000/users/info", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      }
+    })
+      .then((res) => res.json())
+     .then((users) => {
+       setUser(users)
+     })
+    }, [])
+
   function handleClick() {
 
     let click = { title, critic };
@@ -33,6 +31,7 @@ function NewCrit() {
       method: "POST",
       body: JSON.stringify(click),
       headers: {
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     })
@@ -42,10 +41,11 @@ function NewCrit() {
         console.log(json);
       });
   }
+  
+    function handleInput(e, setter) {
+    setter(e.target.value);
+  }
 
-  fetch("http://localhost:5000/users/info", {})
-    .then((res) => res.json())
-    .then((user) => { console.log(user) })
 
   return (
     <div>
