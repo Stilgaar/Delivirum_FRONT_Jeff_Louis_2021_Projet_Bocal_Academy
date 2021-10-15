@@ -37,10 +37,10 @@ function Homepage({ isLog, setIsLog }) {
 
   return (
     <div>
-      
+      {isLog && <h2 className="titreThread">Thread des Critiques Tendances</h2>  }
       {isLog && (postsList.map((posts) => (
         <div>
-        <h2 className="titreThread">Thread des Critiques Tendances</h2>
+        
         <div className="post-card">
           
           <div className="post-content">
