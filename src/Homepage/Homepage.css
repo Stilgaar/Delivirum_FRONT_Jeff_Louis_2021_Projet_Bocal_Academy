@@ -6,7 +6,6 @@
     border-radius: 10px;
     padding: 2vw;
     box-shadow: 5px 3px 10px #4c0080;
-
 }
 
 .titreCrit {
@@ -15,12 +14,11 @@
     text-align: center;
     margin-top: 2%;
     margin-bottom: 4%;
-
 }
 
 .laCrit {
     box-shadow: 5px 3px 10px #2d0e42;
-    width: max-content;
+    width: fit-content;
     border-radius: 10px;
     padding: 0.5vw;
     margin: auto; 

@@ -1,32 +1,33 @@
 //Charement des CSS et dépendances
 import "./Homepage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 
 function Homepage({ isLog, setIsLog }) {
 
   const [postsList, setPostsList] = useState([]);
 
-  const [title, setTitle] = useState();
-  const [critic, setCritic] = useState();
+  useEffect(() => {
 
-  fetch("http://localhost:5000/posts/critic", {
-  })
-  .then((res) =>res.json())
-  .then((json) => {
-    console.log(json)})
-  
+    fetch("http://localhost:5000/posts/critic", {
+    })
+      .then((res) => res.json())
+      .then((criticList) => {
+        setPostsList(criticList)
+      })
+
+  }, [])
 
   return (
     <div>
-      {isLog ? (
+      {isLog && (postsList.map((posts) => (
         <div className="post-card">
           <div className="post-content">
             <div className="post-title">
-              <h2 className="titreCrit">Placeholder : Critique Title</h2>
+              <h2 className="titreCrit">{posts.title}</h2>
             </div>
             <div className="post-critic">
-              <div className="laCrit">PlaceHoder Critique</div>
+              <div className="laCrit">{posts.critic}</div>
             </div>
             <div className="commentCrit">
               <form>
@@ -40,11 +41,9 @@ function Homepage({ isLog, setIsLog }) {
               </form>
             </div>
           </div>
-        </div>
-      ) : (
-        <div></div>
-      )}
+        </div>)))}
     </div>
+
   );
 }
 

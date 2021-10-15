@@ -67,7 +67,7 @@ function Login({ isLog, setIsLog, token, setToken }) {
           </Button>
         </Form> 
         }
-      {isLog === true && <div>connecté</div>
+      {isLog === true && <div></div>
       }
       
         

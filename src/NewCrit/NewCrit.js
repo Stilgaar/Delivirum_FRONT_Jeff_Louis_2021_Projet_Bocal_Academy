@@ -43,15 +43,9 @@ function NewCrit() {
       });
   }
 
-  // TODO : 
-  // -- Afficher le nom de la personne et l'associer avec la critique --
-  // On est loggé donc un token est en cours d'utilisation avec les infos de l'utlisateur
-  // est ce qu'on devrait pas rajouter dans le back une ligne avec l'id de l'utilisateur ? (MODEL)
-  // que nous rajourerions par la suite lorsque nous recupereront les informations pour .
-  // afficher toutes les critiques. 
-
-  // Grace au token récuperer l'_ID <--- 
-  // et l'injecter dans la DB au moment du post ? (en variable pendant le fetch)
+  fetch("http://localhost:5000/users/info", {})
+    .then((res) => res.json())
+    .then((user) => { console.log(user) })
 
   return (
     <div>
