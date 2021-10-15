@@ -26,7 +26,7 @@ function App() {
   function getInfos() {
     let token = localStorage.getItem("token");
 
-    return fetch("http://localhost:5000/users/infos", {
+    return fetch("http://localhost:5000/users/id", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,

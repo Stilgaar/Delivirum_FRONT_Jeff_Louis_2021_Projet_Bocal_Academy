@@ -4,10 +4,18 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 
 function Homepage({ isLog, setIsLog }) {
+
   const [postsList, setPostsList] = useState([]);
 
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
+
+  fetch("http://localhost:5000/posts/critic", {
+  })
+  .then((res) =>res.json())
+  .then((json) => {
+    console.log(json)})
+  
 
   return (
     <div>
