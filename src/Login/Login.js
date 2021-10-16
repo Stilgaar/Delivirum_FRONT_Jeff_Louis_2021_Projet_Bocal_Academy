@@ -7,9 +7,9 @@ import "./Login.css";
 
 import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-function Login({ isLog, setIsLog, token, setToken }) {
+function Login({ isLog, setIsLog, token }) {
 
   // Nos petites constantes d'état qui vont bient
 
@@ -17,8 +17,8 @@ function Login({ isLog, setIsLog, token, setToken }) {
   const [password, setPassword] = useState();
   const history = useHistory()
 
- function handleClick() {
-   
+  function handleClick() {
+
     let submit = { pseudo, password };
 
     // la fonction fetch ici envoie directement les informations dans le back pour qu'elles soient traités
@@ -33,11 +33,8 @@ function Login({ isLog, setIsLog, token, setToken }) {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-    })
-      .then((res) => { 
-        if (res.status === 200) { // si la res renvoi un status 200, lui passer le setIsLog en true, aller mettre le token dans le localStorage et tout le tralalalala
-      res.json() } 
-    else { alert("Mauvais mot de Passe ou Pseudo inconnu")} } ) // si la réponse est pas 200, il envoie une alerte pour dire que ça va pas
+    })// si la res renvoi un status 200, lui passer le setIsLog en true, aller mettre le token dans le localStorage et tout le tralalalala
+      .then((res) => res.json()) // si la réponse est pas 200, il envoie une alerte pour dire que ça va pas
       .then((json) => {
         localStorage.setItem("token", json.token); // <--- entrée du token dans le localStorage pour pouvoir le récup dans les autres composants
         setIsLog(true);
@@ -53,7 +50,7 @@ function Login({ isLog, setIsLog, token, setToken }) {
 
   return (
     <div>
-    {isLog === false && 
+      {isLog === false &&
         <Form className="loginBox">
           <Form.Group className="mb-3">
             <Form.Label>
@@ -78,13 +75,13 @@ function Login({ isLog, setIsLog, token, setToken }) {
           <Button className="boutonLogin" onClick={() => handleClick()}>
             Valider
           </Button>
-        </Form> 
-        }
+        </Form>
+      }
       {isLog === true && <div></div>
       }
-      
-        
-      
+
+
+
     </div>
   );
 }

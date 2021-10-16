@@ -17,9 +17,13 @@ function Homepage({ isLog, setIsLog }) {
   // elle se situe sur deux routes : /homepage et / pour des soucis de navigation.
 
   const [postsList, setPostsList] = useState([]);
-  const [user, setUser] = useState({pseudo : "", email : ""});
+  const [user, setUser] = useState({ pseudo: "", email: "" });
+  const [comment, setComment] = useState();
   let token = localStorage.getItem("token")
 
+  let currentUser = user.pseudo
+  
+ 
   // nous allons d'une part chercher qui est connecté avec son token. 
   // nous ne l'utilisons pas encore mais ce sera important pour celui qui laissera un commentaire
   // comme ça nous pourrons utliser le user.pseudo pour faire un current user au moment de l'envoi du comm dans la base de données
@@ -51,30 +55,48 @@ function Homepage({ isLog, setIsLog }) {
       })
 
   }, [])
+  
+  function handleClick() {
+  
+    let envoyerComm = { comment, currentUser }
+
+    fetch("http://localhost:5000/posts/comment", {
+      method: "POST",
+      body: JSON.stringify(envoyerComm),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  )}
+  
+  function handleInput(e, setter) {
+    setter(e.target.value);
+  }
 
   return (
     <div>
-      {isLog && <h2 className="titreThread">Thread des Critiques Tendances</h2>  }
+      {isLog && <h2 className="titreThread">Thread des Critiques Tendances</h2>}
       {isLog && (postsList.map((posts) => (
         <div>
-        <div className="post-card">
-          <div className="post-content">
-            <div className="post-title">
-              <h2 className="titreCrit">{posts.title}</h2>
-            </div>
-            <div className="post-critic">
-              <div className="laCrit">{posts.critic}</div>
-              <div className="critCom">Ce commentaire vous a été proposé par {posts.currentUser}</div>
-            </div>
-            <div className="commentCrit">
-              <form>
-                <label>Quelque chose à dire ?</label>
-                <input type="text" name="commentaire" placeholder="Send Salt" />
-                <Button className="buttonCrit">
-                  Envoyer ton commentaire !
-                </Button>
-              </form>
-            </div>
+          <div className="post-card">
+            <div className="post-content">
+              <div className="post-title">
+                <h4 className="titreCrit"><span className="titleCritHome">Titre du Livre</span> : {posts.title}</h4>
+              </div>
+              <div className="post-critic">
+                <div className="laCrit">{posts.critic}</div>
+                <div className="critCom">Cette critiquee vous a été proposé par {posts.currentUser}</div>
+              </div>
+              <div className="commentCrit">
+                <form>
+                  <label>Quelque chose à rajouter ?</label>
+                  <input type="text" name="commentaire" placeholder="Send Salt" onInput={(e) => handleInput(e, setComment)} />
+                  <Button className="buttonCrit" onClick={() => handleClick()}>
+                    Envoyer ton commentaire !
+                  </Button>
+                </form>
+              </div>
             </div></div>
         </div>)))}
     </div>

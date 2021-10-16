@@ -41,12 +41,12 @@ function NewCrit() {
      })
     }, [])
 
-
   // ce qui se passe au moment du click. 
   // il récupère le titre, la critic et le currentUser de l'useEffect d'au dessus
   // il va la poster directement dans la BD
   // notez qu'il serait utile de faire de même lors de la création de commentaire au niveau du CurrentUser.
   // notez aussi que c'est dans le même coin de la BD donc ça va être plutôt facile à mettre en place 
+
 
   function handleClick() {
 
