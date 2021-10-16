@@ -22,7 +22,12 @@ function Homepage({ isLog, setIsLog }) {
   let token = localStorage.getItem("token")
 
   let currentUser = user.pseudo
+
   
+  // faire un composant à part pour les commentaires.
+  // comme ça il aura une propre ID pour chaque composant. 
+  // et ce sera plus facile à récupérer sur chaque post
+  // ce sera plus facile à tout finir
  
   // nous allons d'une part chercher qui est connecté avec son token. 
   // nous ne l'utilisons pas encore mais ce sera important pour celui qui laissera un commentaire
