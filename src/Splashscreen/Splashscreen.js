@@ -2,6 +2,9 @@ import './Splashscreen.css'
 
 function Splashscreen({ isLog, setIsLog }) {
 
+    // le splaschreen est juste le petit slogan.
+    // j'ai préféré en faire un petit élément au cas ou je veuille le réutilisé plus tard. 
+
     return (
         <div>
             {isLog ?

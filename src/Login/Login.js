@@ -1,20 +1,30 @@
 import "./Login.css";
+
+// si vous utiliser bootsrap n'oubliez pas d'importer vos élements. 
+// bootstrap c'est vraiment pas mal pour faire votre squellette et avancer sur d'autres trucs
+// avec le temps précieux gagné vous pourrez faire des trucs plus ouf dans votre back avec le temps imparti
+// à la fin, si tout est fait, vous y revenez et vous personnallisez vraiment votre css/faites des trucs à la mano
+
 import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import { useHistory} from "react-router-dom";
 
 function Login({ isLog, setIsLog, token, setToken }) {
+
   // Nos petites constantes d'état qui vont bient
+
   const [pseudo, setPseudo] = useState();
   const [password, setPassword] = useState();
   const history = useHistory()
 
-  const handleClick = () => {
+ function handleClick() {
+   
     let submit = { pseudo, password };
 
-    if(token == true) {
-      history.push("/");
-    }
+    // la fonction fetch ici envoie directement les informations dans le back pour qu'elles soient traités
+    // elle passe la fonctoin setIsLog en true si la réponse du serveur est positive.
+    // nous pourrions rajouter des erreurs et des popsup jolis si la personne s'est trompé dans le mpd ou dans son pseudo ou les deux
+    // proposer aussi un lien pour se crée un compte le cas échéant.
 
     fetch("http://localhost:5000/users/login", {
       method: "POST",
@@ -24,15 +34,17 @@ function Login({ isLog, setIsLog, token, setToken }) {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => { 
+        if (res.status === 200) { // si la res renvoi un status 200, lui passer le setIsLog en true, aller mettre le token dans le localStorage et tout le tralalalala
+      res.json() } 
+    else { alert("Mauvais mot de Passe ou Pseudo inconnu")} } ) // si la réponse est pas 200, il envoie une alerte pour dire que ça va pas
       .then((json) => {
-        console.log(json);
         localStorage.setItem("token", json.token); // <--- entrée du token dans le localStorage pour pouvoir le récup dans les autres composants
         setIsLog(true);
-        history.push("/");
+        history.push("/"); // on est automatiquement renvoyé sur (."/") c'est globalemetn la même page que la page de login, sauf que la l'affichage ternaire rentre en compte
       })
       .catch((err) => console.log(err));
-  };
+  }
 
   // LA SEXYYY HOT FUNCTION
   function handleInput(e, setter) {

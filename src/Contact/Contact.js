@@ -6,7 +6,7 @@ function Contact () {
         <div className="contact">
 
         <h2 className="contact2">Présentation</h2>
-        <h3 className="contact2">Le Bon, la Brute et le Truant</h3>
+        <h3 className="contact2">Le Bon et le Truant</h3>
         <p>Nous sommes deux étudtiants du Bocal Academy pour la formation Full Stack. <br/>
         Nous avons crée ce projet, en React Js, Node.Js-Express avec comme bas de données MongoDB, dans la fin de notre parcourt Front End,
          pour cette raison évidenente il se retrouve sur nos books respectifs.

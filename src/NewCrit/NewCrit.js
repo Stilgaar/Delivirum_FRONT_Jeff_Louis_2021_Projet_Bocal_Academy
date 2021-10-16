@@ -1,4 +1,10 @@
 import "./NewCrit.css";
+
+// si vous utiliser bootsrap n'oubliez pas d'importer vos élements. 
+// bootstrap c'est vraiment pas mal pour faire votre squellette et avancer sur d'autres trucs
+// avec le temps précieux gagné vous pourrez faire des trucs plus ouf dans votre back avec le temps imparti
+// à la fin, si tout est fait, vous y revenez et vous personnallisez vraiment votre css/faites des trucs à la mano
+
 import { FloatingLabel, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom";
@@ -10,9 +16,16 @@ function NewCrit() {
   const [user, setUser] = useState({pseudo : "", email : ""});
   let token = localStorage.getItem("token")
   const history = useHistory()
-
-
+  
   let currentUser = user.pseudo
+
+  // dans cet element nous alons chopper l'user d'un côté via son token
+  // ce sera décodé dans le back pour qu'on puisse récupéré son pseudo
+  // une fois qu'on a le pseudo, on peut le rajouter dans une petite ligne, pour qu'il sache que ce qu'il dira pourra être retenu contre lui
+  // mais le currentUser/user.pseudo va aussi nous servir à l'injecter dans le commentaire. 
+  // comme ça chaque commentaire sera lié au pseudo et nous pourrons plus facilement sortir les informations en cas de besoin
+
+// nous utilisons des useEffects, sinon la page tournerait en boucle, jusqu'à fonte du process
 
   useEffect(() => {
     fetch("http://localhost:5000/users/info", {
@@ -27,6 +40,13 @@ function NewCrit() {
        setUser(users)
      })
     }, [])
+
+
+  // ce qui se passe au moment du click. 
+  // il récupère le titre, la critic et le currentUser de l'useEffect d'au dessus
+  // il va la poster directement dans la BD
+  // notez qu'il serait utile de faire de même lors de la création de commentaire au niveau du CurrentUser.
+  // notez aussi que c'est dans le même coin de la BD donc ça va être plutôt facile à mettre en place 
 
   function handleClick() {
 
@@ -46,10 +66,12 @@ function NewCrit() {
         history.push("/Homepage")});
   }
   
+// la fonction sexy de jeremy, vous devriez vraiment l'écire sur un postit, même Antonin l'à grave trop kiffé
+// je vous invite à prendre cinq minutes pour la comprendre, franchement vous allez aimer
+
     function handleInput(e, setter) {
     setter(e.target.value);
   }
-
 
   return (
     <div>

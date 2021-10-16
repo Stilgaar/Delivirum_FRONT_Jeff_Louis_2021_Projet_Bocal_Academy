@@ -2,8 +2,6 @@
     color: #2d0e42;
 margin-top: 2%;
 margin-bottom: 4%;
-    
-
 }
 
 .boxProfil {
@@ -13,4 +11,8 @@ margin-bottom: 4%;
     border-radius: 10px;
 padding: 2vw;
 box-shadow: 5px 3px 10px #4c0080;
+}
+
+.spanProf {
+    font-weight: bolder;
 }
