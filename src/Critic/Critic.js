@@ -60,7 +60,7 @@ function Critic() {
                                 <div className="critCom">Cette critique vous a été proposé par {item.currentUser}</div>
                             </div>
                         </div>
-                        <Comment/>
+                        <Comment currentPost={item._id}/>
                     </div>
                 )}
             </div>

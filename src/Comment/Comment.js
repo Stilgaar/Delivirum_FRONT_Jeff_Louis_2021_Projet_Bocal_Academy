@@ -14,30 +14,32 @@ import { Button } from 'react-bootstrap';
 // de ce fait aussi nous allons crée une autre route, ainsi qu'une collection spécialement pour les commentaires
 // en plus de celle que nous avons déjà pour les critiques et les users. 
 
-function Comment() {
+function Comment({currentPost}) {
 
 
-    // j'ai du faire un newComment
+    // constante d'état récuperant le commentaire dans le formulaire
     const [comment, setComment] = useState([]);
+
+    // constante d'état récuperant les commentaires dans la DB
     const [newComment, setNewComment] = useState([]);
+
+    // pour récuperer le nom de l'user et le foutre ou on veut
     const [user, setUser] = useState({ pseudo: "", email: "" });
-    let token = localStorage.getItem("token")
     let currentUser = user.pseudo
+    let token = localStorage.getItem("token")
+    
+   
 
     function handleClick() {
-
-        let envoyerComm = { comment, currentUser }
-
+        
+        let envoyerComm = { comment, currentUser, currentPost }
         fetch("http://localhost:5000/comment", {
             method: "POST",
             body: JSON.stringify(envoyerComm),
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
-            },
-        }
-        )
-    }
+            } , } ) }
 
     // nous allons d'une part chercher qui est connecté avec son token. 
     // nous ne l'utilisons pas encore mais ce sera important pour celui qui laissera un commentaire
@@ -50,30 +52,24 @@ function Comment() {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
-            }
-        })
+            } } )
             .then((res) => res.json())
             .then((users) => {
                 setUser(users)
-            })
-    }, [])
+            } ) }, [] )
 
 
     useEffect(() => {
 
         fetch("http://localhost:5000/comment/get", {
-            method: "GET"
-        })
+            method: "GET" } )
             .then((res) => res.json())
             .then((comments) => {
                 setNewComment(comments)
-            })
-
-    }, [])
+            } )  }, [] )
 
     function handleInput(e, setter) {
-        setter(e.target.value);
-    }
+        setter(e.target.value); }
 
     return (
 
