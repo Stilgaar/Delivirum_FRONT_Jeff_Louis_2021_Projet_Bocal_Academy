@@ -24,14 +24,6 @@
     margin: auto; 
 }
 
-.commentCrit {
-    margin-top: 2%;
-    display: flex; 
-    flex-wrap: wrap;
-    flex-direction: column;
-    text-align: center;
-}
-
 .buttonCrit {
     background: linear-gradient(45deg, #8e3fc4, #4c0080);
     border:1px solid #2d0e42;
@@ -67,9 +59,4 @@
 
 .titleCritHome {
     font-weight: bolder;
-}
-
-.critAndCom {
-
-    box-shadow: 5px 3px 5px #4c0080;
 }
