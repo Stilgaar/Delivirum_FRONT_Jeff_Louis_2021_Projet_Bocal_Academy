@@ -29,6 +29,7 @@ function Critic() {
     // nous allons d'une part chercher qui est connecté avec son token. 
     // nous ne l'utilisons pas encore mais ce sera important pour celui qui laissera un commentaire
     // comme ça nous pourrons utliser le user.pseudo pour faire un current user au moment de l'envoi du comm dans la base de données
+
     useEffect(() => {
         fetch("http://localhost:5000/users/info", {
             method: "GET",

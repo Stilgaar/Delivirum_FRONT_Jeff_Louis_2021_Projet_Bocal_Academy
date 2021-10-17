@@ -8,6 +8,7 @@
 }
 
 .buttonCrit {
+    font-size: 0.8rem;
     background: linear-gradient(45deg, #8e3fc4, #4c0080);
     border:1px solid #2d0e42;
     color: ivory;
@@ -15,7 +16,49 @@
 }
 
 .buttonCrit:hover {
+    font-size: 0.8rem;
     background: linear-gradient(105deg, #8e3fc4, #4c0080);
     border:1px solid #1f0530;
     color: ivory;
+}
+
+.commentaire {
+    text-align: center;
+    box-shadow: 2px 1px 3px #4c0080;
+    border-radius: 10px;
+    width: max-content;
+    margin: 0.2rem; 
+    padding: 0.4rem;
+
+}
+
+.commentRajout {
+    margin-right: 0.6rem;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.commentCrit {
+    text-align: center;
+    padding: 0.4rem;
+    display: flex;
+    flex: wrap;
+     justify-content: center;
+    white-space: nowrap;
+    flex-direction: row;
+    box-shadow: 2px 1px 3px #4c0080;
+    border-radius: 10px;
+    width: 75%;
+    margin: auto; 
+}
+
+.currentUser{
+    color: #2d0e42;
+    font-weight: bolder;
+    text-transform: capitalize;
+
+}
+
+.commentCrit input {
+    width: 50%;
 }

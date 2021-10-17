@@ -13,10 +13,10 @@ function NewCrit() {
 
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
-  const [user, setUser] = useState({pseudo : "", email : ""});
+  const [user, setUser] = useState({ pseudo: "", email: "" });
   let token = localStorage.getItem("token")
   const history = useHistory()
-  
+
   let currentUser = user.pseudo
 
   // dans cet element nous alons chopper l'user d'un côté via son token
@@ -25,86 +25,110 @@ function NewCrit() {
   // mais le currentUser/user.pseudo va aussi nous servir à l'injecter dans le commentaire. 
   // comme ça chaque commentaire sera lié au pseudo et nous pourrons plus facilement sortir les informations en cas de besoin
 
-// nous utilisons des useEffects, sinon la page tournerait en boucle, jusqu'à fonte du process
+  // nous utilisons des useEffects, sinon la page tournerait en boucle, jusqu'à fonte du process
+
+
+
+
+
 
   useEffect(() => {
-    fetch("http://localhost:5000/users/info", {
+    fetch('https://api2.isbndb.com/book/9781934759486', {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+        "Content-Type": 'application/json',
+        "Authorization": 'YOUR_REST_KEY'
       }
+    }
+    ).then((res) => {
+      return res.json()
+    }).then((json) => {
+      console.log(json)
+    })  
+
+}, [])
+
+
+
+useEffect(() => {
+  fetch("http://localhost:5000/users/info", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    }
+  })
+    .then((res) => res.json())
+    .then((users) => {
+      setUser(users)
     })
-      .then((res) => res.json())
-     .then((users) => {
-       setUser(users)
-     })
-    }, [])
+}, [])
 
-  // ce qui se passe au moment du click. 
-  // il récupère le titre, la critic et le currentUser de l'useEffect d'au dessus
-  // il va la poster directement dans la BD
-  // notez qu'il serait utile de faire de même lors de la création de commentaire au niveau du CurrentUser.
-  // notez aussi que c'est dans le même coin de la BD donc ça va être plutôt facile à mettre en place 
+// ce qui se passe au moment du click. 
+// il récupère le titre, la critic et le currentUser de l'useEffect d'au dessus
+// il va la poster directement dans la BD
+// notez qu'il serait utile de faire de même lors de la création de commentaire au niveau du CurrentUser.
+// notez aussi que c'est dans le même coin de la BD donc ça va être plutôt facile à mettre en place 
 
 
-  function handleClick() {
+function handleClick() {
 
-    let click = { title, critic, currentUser };
+  let click = { title, critic, currentUser };
 
-    fetch("http://localhost:5000/posts", {
-      method: "POST",
-      body: JSON.stringify(click),
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log('teub');
-        history.push("/Homepage")});
-  }
-  
+  fetch("http://localhost:5000/posts", {
+    method: "POST",
+    body: JSON.stringify(click),
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      console.log('teub');
+      history.push("/Homepage")
+    });
+}
+
 // la fonction sexy de jeremy, vous devriez vraiment l'écire sur un postit, même Antonin l'à grave trop kiffé
 // je vous invite à prendre cinq minutes pour la comprendre, franchement vous allez aimer
 
-    function handleInput(e, setter) {
-    setter(e.target.value);
-  }
+function handleInput(e, setter) {
+  setter(e.target.value);
+}
 
-  return (
-    <div>
-      <Form className="newCrit-box">
-        <h2 className="newCritH2">Balance ta critique!</h2>
-        <FloatingLabel
-          controlId="floatingTextarea"
-          label="Titre du Livre"
-          className="mb-3"
-        >
-          <Form.Control
-            as="textarea"
-            placeholder="Titre"
-            name="title"
-            onInput={(e) => handleInput(e, setTitle)}
-          />
-        </FloatingLabel>
-        <FloatingLabel controlId="floatingTextarea2" label="Ta critique">
-          <Form.Control
-            as="textarea"
-            placeholder="Ta critique"
-            style={{ height: "200px" }}
-            name="critic"
-            onInput={(e) => handleInput(e, setCritic)}
-          />
-        </FloatingLabel> 
-        <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres </div>
-        <Button className="boutonNewCrit" onClick={() => handleClick()}>
-          Valider
-        </Button>
-      </Form>
-    </div>
-  );
+return (
+  <div>
+    <Form className="newCrit-box">
+      <h2 className="newCritH2">Balance ta critique!</h2>
+      <FloatingLabel
+        controlId="floatingTextarea"
+        label="Titre du Livre"
+        className="mb-3"
+      >
+        <Form.Control
+          as="textarea"
+          placeholder="Titre"
+          name="title"
+          onInput={(e) => handleInput(e, setTitle)}
+        />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingTextarea2" label="Ta critique">
+        <Form.Control
+          as="textarea"
+          placeholder="Ta critique"
+          style={{ height: "200px" }}
+          name="critic"
+          onInput={(e) => handleInput(e, setCritic)}
+        />
+      </FloatingLabel>
+      <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres </div>
+      <Button className="boutonNewCrit" onClick={() => handleClick()}>
+        Valider
+      </Button>
+    </Form>
+  </div>
+);
 }
 
 export default NewCrit;
