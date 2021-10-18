@@ -26,14 +26,16 @@ function Comment({ currentPost }) {
 
     // pour récuperer le nom de l'user et le foutre ou on veut
     const [user, setUser] = useState({ pseudo: "", email: "" });
-    const history = useHistory()
-
     let currentUser = user.pseudo
 
+    // faut topper le token dans le localstorage pour un peu plus tard
     let token = localStorage.getItem("token")
 
+    // Ce qui se passe quand on clique sur le commentaire
     function handleClick() {
-
+        // comment est celui qui vient du formulaire
+        // currentUser vient du useeffects qui le récupére du token
+        // curent post nous vient du parents : comme ça il toppe l'_id sur chaque <Critic <Comment /> />
         let envoyerComm = { comment, currentUser, currentPost }
 
         fetch("http://localhost:5000/comment", {
@@ -46,6 +48,9 @@ function Comment({ currentPost }) {
         }).then(() => refrech())
     }
 
+
+    // La fonction refrech est celle que l'on mets en fin de callback au niveau du handleclick.
+    // comme ça, ça 'relance' la page et les commentaires peuvent être affichés instantanéments.
     function refrech() {
 
         let envoyerComm = { currentPost }
@@ -60,16 +65,15 @@ function Comment({ currentPost }) {
             .then((comments) => {
                 setNewComment(comments)
                 console.log(comments)
-            })
-
-    }
+            }) }
 
     // nous allons d'une part chercher qui est connecté avec son token. 
     // nous ne l'utilisons pas encore mais ce sera important pour celui qui laissera un commentaire
     // comme ça nous pourrons utliser le user.pseudo pour faire un current user au moment de l'envoi du comm dans la base de données
 
-    useEffect(() => {
+    // nous utilisons des useEffects, sinon la page tournerait en boucle, jusqu'à fonte du process
 
+    useEffect(() => {
         fetch("http://localhost:5000/users/info", {
             method: "GET",
             headers: {
@@ -80,14 +84,16 @@ function Comment({ currentPost }) {
             .then((res) => res.json())
             .then((users) => {
                 setUser(users)
-            })
-    }, [])
+            }) }, [])
 
-
+// ce usefeffect sert à relancer la fonction refrech une fois au chargement de la page, cela évite qu'il y a deux fois le même code sur la page
+// DRY
     useEffect(() => {
         refrech()
     }, [])
+    
 
+    // Hot & Sexy
     function handleInput(e, setter) {
         setter(e.target.value);
     }
@@ -97,9 +103,9 @@ function Comment({ currentPost }) {
         <div>
             <form>
                 <div className="commentCrit">
-                    <input type="text" name="commentaire" placeholder="Quelque chose à rajouter ?" onInput={(e) => handleInput(e, setComment)} />
+                    <input className="inputCom" type="text" name="commentaire" placeholder="Quelque chose à rajouter ?" onInput={(e) => handleInput(e, setComment)} />
                     <Button className="buttonCrit" onClick={() => handleClick()}>
-                        Envoye ton commentaire !
+                        Commenter
                     </Button>
                 </div>
             </form>

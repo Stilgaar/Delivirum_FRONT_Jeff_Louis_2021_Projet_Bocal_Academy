@@ -18,13 +18,17 @@ import "./Homepage.css";
 // rajouter un currentPost dans le modèle de commentaire.
 // récuperer l'id de la publication sur laquelle on envoi un commentaire à faire dans comment.js
 // les balancer en fetch post dans la BD (DONE !)
-
-// TO DO LIST
 // get en fonction de l'id de celui qui publie. 
 // publier les commentaires que en fonction de l'id de la critique
 // faire un peu de css au niveau de la reception commentaire et de la comment-box
 
+// TO DO LIST
+
 // APRES TO DO LIST
+// topper l'API des bookins dans le NEWCRIT si possible
+// l'intégrer dans un type de recherche
+
+// APRES APRES TO DO
 // passer sur le like
 // trouver un moyen que l'user ne puisse en faire qu'un 
 // l'implenter dans comments (la BD)

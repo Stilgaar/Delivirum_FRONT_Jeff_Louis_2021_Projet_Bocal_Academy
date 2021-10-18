@@ -40,7 +40,7 @@
 
 .commentCrit {
     text-align: center;
-    padding: 0.4rem;
+    padding: 0.6rem;
     display: flex;
     flex: wrap;
      justify-content: center;
@@ -48,8 +48,9 @@
     flex-direction: row;
     box-shadow: 2px 1px 3px #4c0080;
     border-radius: 10px;
-    width: 75%;
+    width: 45%;
     margin: auto; 
+    background-color: #bd8bdf71;
 }
 
 .currentUser{
@@ -61,4 +62,9 @@
 
 .commentCrit input {
     width: 50%;
+}
+
+.inputCom{
+    border-radius: 10px;
+    border: 0.2rem solid #4c0080;
 }

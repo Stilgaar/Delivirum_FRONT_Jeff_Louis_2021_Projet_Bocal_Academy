@@ -9,6 +9,7 @@ footer {
     left: 0;
     font-weight: bolder;
     clear: both;
+    margin-top:auto; 
 }
 
 .footerBox{

@@ -84,6 +84,7 @@ function App() {
   return (
     <div>
       <Router>
+        <div className="main">
         <Navigation isLog={isLog} setIsLog={setIsLog} />
         <Switch>
           <Route exact path="/" >
@@ -118,6 +119,7 @@ function App() {
             <NewCrit user={user} />
           </Route>
         </Switch>
+        </div>
         <Footer />
       </Router>
     </div>

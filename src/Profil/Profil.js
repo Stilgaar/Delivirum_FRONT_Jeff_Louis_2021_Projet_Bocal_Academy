@@ -5,10 +5,23 @@ function Profil() {
 
   const [user, setUser] = useState({ pseudo: "", email: "" });
   const [postsList, setPostsList] = useState([]);
+  const [bouquins, setBouquins] = useState([]);
   let token = localStorage.getItem("token")
+  console.log(bouquins)
 
   // le profil va chercher les informations sur le porteur de token
   // pour cette raison on envoi le Authorisation directement dans le back pour qu'il puisse décoder le token là bas. 
+
+  useEffect(() => {
+    fetch("https://google-books.p.rapidapi.com/volumes?key=AIzaSyAOsteuaW5ifVvA_RkLXh0mYs6GLAD6ykc", {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "book4.p.rapidapi.com",
+        "x-rapidapi-key": "b2ef3f2c7amshaaae08f7447579fp18640cjsn4e6d35c5f0ef"
+      }
+    }).then(response => response.json())
+      .then(livres => setBouquins(livres))
+  }, [])
 
   useEffect(() => {
     fetch("http://localhost:5000/users/info", {
@@ -18,15 +31,12 @@ function Profil() {
       .then((res) => {
         setUser(res)
       })
-
-    console.log(user)
   }, [])
-
 
   // je vais aller chercher les posts aussi, je vais mapper le pseudo de l'utilisateur avec le pseudo relié aux différentes critiques.
   // si elles sont équivalentes je les publie dans la box correspondante. 
   // notez que je repasserais probablement par un autre useState.
-  
+
   useEffect(() => {
     fetch("http://localhost:5000/posts/critic", {
     })

@@ -13,14 +13,17 @@ function NewCrit() {
 
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
+  const [data, setData] = useState([]);
   const [user, setUser] = useState({ pseudo: "", email: "" });
   let token = localStorage.getItem("token")
   const history = useHistory()
 
   let currentUser = user.pseudo
 
-  const [api, setApi] = useState([]);
-  console.log(api)
+useState(() => {
+ fetch('https://www.googleapis.com/books/v1/volumes?q=pride+prejudice&download=epub&key=AIzaSyAwExowwTiBhd-qmxu5T8aIZbrVQWekT40', {
+    }).then((res) => res.json()).then((list) => {setData(list)})
+},[])
 
   // dans cet element nous alons chopper l'user d'un côté via son token
   // ce sera décodé dans le back pour qu'on puisse récupéré son pseudo
@@ -28,7 +31,6 @@ function NewCrit() {
   // mais le currentUser/user.pseudo va aussi nous servir à l'injecter dans le commentaire. 
   // comme ça chaque commentaire sera lié au pseudo et nous pourrons plus facilement sortir les informations en cas de besoin
 
-  // nous utilisons des useEffects, sinon la page tournerait en boucle, jusqu'à fonte du process
 
   // ce qui se passe au moment du click. 
   // il récupère le titre, la critic et le currentUser de l'useEffect d'au dessus
@@ -66,32 +68,24 @@ function NewCrit() {
   return (
     <div>
       <Form className="newCrit-box">
+
         <h2 className="newCritH2">Balance ta critique!</h2>
-        <FloatingLabel
-          controlId="floatingTextarea"
-          label="Titre du Livre"
-          className="mb-3"
-        >
-          <Form.Control
-            as="textarea"
-            placeholder="Titre"
-            name="title"
-            onInput={(e) => handleInput(e, setTitle)}
-          />
+        <FloatingLabel controlId="floatingTextarea" label="Titre du Livre" className="mb-3" >
+          <Form.Control as="textarea" placeholder="Titre" name="title" onInput={(e) => handleInput(e, setTitle)} />
         </FloatingLabel>
+
         <FloatingLabel controlId="floatingTextarea2" label="Ta critique">
-          <Form.Control
-            as="textarea"
-            placeholder="Ta critique"
-            style={{ height: "200px" }}
-            name="critic"
-            onInput={(e) => handleInput(e, setCritic)}
-          />
+          <Form.Control as="textarea" placeholder="Ta critique" style={{ height: "200px" }} name="critic" onInput={(e) => handleInput(e, setCritic)}/>
         </FloatingLabel>
+
+        <input placeholder="cherche Ton livre !"/>
+
         <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres </div>
+       
         <Button className="boutonNewCrit" onClick={() => handleClick()}>
           Valider
         </Button>
+
       </Form>
     </div>
   );
