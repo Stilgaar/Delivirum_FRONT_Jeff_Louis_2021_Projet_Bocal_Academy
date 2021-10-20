@@ -2,4 +2,11 @@
     width: 70%;
     margin: auto;
     margin-top: 10%;
+    box-shadow: 5px 3px 10px #4c0080;
+    padding: 2vw;
+    border-radius: 10px;
+}
+
+.contact2 {
+    color: #4c0080;
 }
