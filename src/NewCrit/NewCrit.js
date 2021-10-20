@@ -70,23 +70,25 @@ function NewCrit() {
     setter(e.target.value);
   }
 
-// COTE RECHERCHE DE LIVRES !!
+// COTE RECHERCHE DE LIVRES !! // TODO : à foutre dans son propre composant. 
 
   const [book, setBook] = useState(""); // ce qui est récupéré dans notre formulaire (au handlechange)
   const [result, setResult] = useState([]); // ce qui est récupéré après le handlesubmit
   const [apiKey, setApiKey] = useState('AIzaSyAwExowwTiBhd-qmxu5T8aIZbrVQWekT40') // mettre notre clefs api dans une variable, l'idéal aurait été dans un .env, certes...
 
+  // récuperation de données au subit et injection dans le fetch 
   function handleSubmit(event) {
     event.preventDefault();
-  
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&key=${apiKey}&maxResults=10`) // le maxresults monte de 10 à 40 sur l'api google books
-    .then((res) => res.json()
-    .then((data) => {setResult(data)})
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&key=${apiKey}&maxResults=10`) // le maxresults monte de 10 à 40 sur l'api google books // le max résults je l'ai rajouté pour ne pas avoir un putain d'array de 40 à chaque réusltat
+    .then((res) => res.json()                                                                         // rapidement le bordel
+    .then((data) => {setResult(data)}) // envoi dans le result. (ce qui va nous servir à les afficher par la suite)
     ) }
 
+
+    // récuperation de ce qu'il a dans l'input
   function handleChange(event) {
     const book = event.target.value 
-    setBook(book);}
+    setBook(book);} //expedition dans le setter de books. c'est celui qu'on va récupérer pour faire le fetch sur l'API google books.
 
   return (
     <div>
@@ -104,7 +106,6 @@ function NewCrit() {
         </FloatingLabel>
         <Button type="submit"> Recherche </Button>
       </Form>
-
 
       <Form className="newCrit-box">
         <h2 className="newCritH2">Balance ta critique!</h2>
@@ -124,7 +125,8 @@ function NewCrit() {
 
       </Form>
 
-     {/* {result.map(book => (
+     {/* {result.map(book => ( // FONCTION POUR RECUPERER LES IMAGES SUR LAPI GOOGLE. MALHEUREUSEMENT LES THUMBNAILS ONT APPAREMENT DISPARUS
+     // Check à volumeInfo.imageLinks.thumbnail <<=== truc récupéré sur le net. sinon check l'adresse suivante : https://developers.google.com/books/docs/v1/reference/volumes
         {/* <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
       ))}*/}
     </div>
