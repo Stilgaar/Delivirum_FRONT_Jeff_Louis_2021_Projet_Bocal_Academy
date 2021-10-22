@@ -13,6 +13,8 @@ import Contact from './Contact/Contact'
 import Homepage from './Homepage/Homepage'
 import NewCrit from './NewCrit/NewCrit';
 import Profil from './Profil/Profil';
+import Search from './Search/Search';
+
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
 
   // les constantes d'état
   // notez que isLog et setIsLog est une constant d'état que nous envoyons en props aux enfants de APP, c'est ce qui nous sert à faire l'affichage conditionnel sur plusieurs pages
-  
+
   const [user, setUser] = useState({});
   const [isLog, setIsLog] = useState(null);
   const [token, setToken] = useState(null);
@@ -85,40 +87,40 @@ function App() {
     <div>
       <Router>
         <div className="main">
-        <Navigation isLog={isLog} setIsLog={setIsLog} />
-        <Switch>
-          <Route exact path="/" >
-            <Homepage isLog={isLog} setIsLog={setIsLog} />
-           {isLog !== null &&  <Splashscreen isLog={isLog} setIsLog={setIsLog} /> }
-           {isLog !== null &&  <Login isLog={isLog} setIsLog={setIsLog} /> }
-          </Route>
-          <Route path="/Homepage">
-            <Homepage isLog={isLog} setIsLog={setIsLog}/>
-          </Route>
-          <Route path="/Login">
-            {isLog !== null && <Login isLog={isLog} setIsLog={setIsLog} />}
-            {isLog !== null && <Splashscreen isLog={isLog} setIsLog={setIsLog} />}
-          </Route>
-          <Route path="/Signin">
-            <Signin />
-            <Splashscreen isLog={isLog} setIsLog={setIsLog} />
-          </Route>
-          <Route exact path="/Homepage">
-            <Homepage isLog={isLog} setIsLog={setIsLog} />
-          </Route>
-          <Route path="/Profil">
-  <Profil />
-</Route>
-          <Route path="/RGPD">
-            <RGPD />
-          </Route>
-          <Route path="/Contact">
-            <Contact />
-          </Route>
-          <Route path="/Critique">
-            <NewCrit user={user} />
-          </Route>
-        </Switch>
+          <Navigation isLog={isLog} setIsLog={setIsLog} />
+          <Switch>
+            <Route exact path="/" >
+              <Homepage isLog={isLog} setIsLog={setIsLog} />
+              {isLog !== null && <Splashscreen isLog={isLog} setIsLog={setIsLog} />}
+              {isLog !== null && <Login isLog={isLog} setIsLog={setIsLog} />}
+            </Route>
+            <Route path="/Homepage">
+              <Homepage isLog={isLog} setIsLog={setIsLog} />
+            </Route>
+            <Route path="/Login">
+              {isLog !== null && <Login isLog={isLog} setIsLog={setIsLog} />}
+              {isLog !== null && <Splashscreen isLog={isLog} setIsLog={setIsLog} />}
+            </Route>
+            <Route path="/Signin">
+              <Signin />
+              <Splashscreen isLog={isLog} setIsLog={setIsLog} />
+            </Route>
+            <Route exact path="/Homepage">
+              <Homepage isLog={isLog} setIsLog={setIsLog} />
+            </Route>
+            <Route path="/Profil">
+              <Profil />
+            </Route>
+            <Route path="/RGPD">
+              <RGPD />
+            </Route>
+            <Route path="/Contact">
+              <Contact />
+            </Route>
+            <Route path="/Critique">
+              <Search />
+            </Route>
+          </Switch>
         </div>
         <Footer />
       </Router>

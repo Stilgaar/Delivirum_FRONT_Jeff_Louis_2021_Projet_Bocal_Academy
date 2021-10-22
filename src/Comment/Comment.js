@@ -44,9 +44,7 @@ function Comment({ currentPost }) {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
-            },
-        }).then(() => refrech())
-    }
+            },  }).then(() => refrech())}
 
 
     // La fonction refrech est celle que l'on mets en fin de callback au niveau du handleclick.
@@ -59,13 +57,10 @@ function Comment({ currentPost }) {
             body: JSON.stringify(envoyerComm),
             headers: {
                 "Content-Type": "application/json",
-            },
-        })
+            }, })
             .then((res) => res.json())
             .then((comments) => {
-                setNewComment(comments)
-                console.log(comments)
-            }) }
+                setNewComment(comments)}) }
 
     // nous allons d'une part chercher qui est connecté avec son token. 
     // nous ne l'utilisons pas encore mais ce sera important pour celui qui laissera un commentaire
@@ -83,20 +78,15 @@ function Comment({ currentPost }) {
         })
             .then((res) => res.json())
             .then((users) => {
-                setUser(users)
-            }) }, [])
+                setUser(users) }) }, [])
 
 // ce usefeffect sert à relancer la fonction refrech une fois au chargement de la page, cela évite qu'il y a deux fois le même code sur la page
 // DRY
-    useEffect(() => {
-        refrech()
-    }, [])
+    useEffect(() => {  refrech()}, [])
     
 
     // Hot & Sexy
-    function handleInput(e, setter) {
-        setter(e.target.value);
-    }
+    function handleInput(e, setter) { setter(e.target.value); }
 
     return (
 

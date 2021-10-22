@@ -8,6 +8,7 @@ import "./NewCrit.css";
 import { FloatingLabel, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Search from '../Search/Search';
 
 // dans cet element nous alons chopper l'user d'un côté via son token
 // ce sera décodé dans le back pour qu'on puisse récupéré son pseudo
@@ -15,7 +16,7 @@ import { useHistory } from "react-router-dom";
 // mais le currentUser/user.pseudo va aussi nous servir à l'injecter dans le commentaire. 
 // comme ça chaque commentaire sera lié au pseudo et nous pourrons plus facilement sortir les informations en cas de besoin
 
-function NewCrit() {
+function NewCrit({auteur, livre, resume, thumbnail, isSearch}) {
 
   // récuperation des données dans le formulaire
   const [title, setTitle] = useState();
@@ -28,7 +29,7 @@ function NewCrit() {
 
   // déplacer l'utilisateur sur les critiques une fois qu'il a terminé.
   const history = useHistory()
-  
+
   // ce qui se passe au moment du click. 
   // il récupère le titre, la critic et le currentUser de l'useEffect d'au dessus, il va la poster directement dans la BD
   // notez qu'il serait utile de faire de même lors de la création de commentaire au niveau du CurrentUser.
@@ -36,7 +37,7 @@ function NewCrit() {
 
   function handleClick() {
 
-    let click = { title, critic, currentUser }
+    let click = { title, critic, currentUser, auteur, livre, resume, thumbnail }
 
     fetch("http://localhost:5000/posts", {
       method: "POST",
@@ -70,42 +71,8 @@ function NewCrit() {
     setter(e.target.value);
   }
 
-// COTE RECHERCHE DE LIVRES !! // TODO : à foutre dans son propre composant. 
-
-  const [book, setBook] = useState(""); // ce qui est récupéré dans notre formulaire (au handlechange)
-  const [result, setResult] = useState([]); // ce qui est récupéré après le handlesubmit
-  const [apiKey, setApiKey] = useState('AIzaSyAwExowwTiBhd-qmxu5T8aIZbrVQWekT40') // mettre notre clefs api dans une variable, l'idéal aurait été dans un .env, certes...
-
-  // récuperation de données au subit et injection dans le fetch 
-  function handleSubmit(event) {
-    event.preventDefault();
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${book}&key=${apiKey}&maxResults=10`) // le maxresults monte de 10 à 40 sur l'api google books // le max résults je l'ai rajouté pour ne pas avoir un putain d'array de 40 à chaque réusltat
-    .then((res) => res.json()                                                                         // rapidement le bordel
-    .then((data) => {setResult(data)}) // envoi dans le result. (ce qui va nous servir à les afficher par la suite)
-    ) }
-
-
-    // récuperation de ce qu'il a dans l'input
-  function handleChange(event) {
-    const book = event.target.value 
-    setBook(book);} //expedition dans le setter de books. c'est celui qu'on va récupérer pour faire le fetch sur l'API google books.
-
   return (
-    <div>
-
-      <Form className="newCrit-box" onSubmit={handleSubmit}>
-        <h3>Recherhe ton bouquin/CHANTIER</h3>
-        <FloatingLabel controlId="floatingTextarea2" label="Ton livre ? " className="mb-3" >
-          <Form.Control as="textarea"
-            type="texte"
-            placeholder="Recherche ton livre"
-            autocomplete="off"
-            name="livre"
-            onChange={handleChange}
-          />
-        </FloatingLabel>
-        <Button type="submit"> Recherche </Button>
-      </Form>
+    <div className="main">
 
       <Form className="newCrit-box">
         <h2 className="newCritH2">Balance ta critique!</h2>
@@ -116,19 +83,17 @@ function NewCrit() {
         <FloatingLabel controlId="floatingTextarea2" label="Ta critique">
           <Form.Control as="textarea" placeholder="Ta critique" style={{ height: "200px" }} name="critic" onInput={(e) => handleInput(e, setCritic)} />
         </FloatingLabel>
-
-        <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres </div>
-
+{isSearch &&
+<div>
+        <div className="ladiv"> Tu vas critiquer {livre} de {auteur}</div>
+        <div className="ladiv"> Petit résumé : {resume} </div>
+</div>}
+        <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres `=)` </div>
         <Button className="boutonNewCrit" onClick={() => handleClick()}>
-          Valider
+          Envoyer quand même !
         </Button>
-
       </Form>
 
-     {/* {result.map(book => ( // FONCTION POUR RECUPERER LES IMAGES SUR LAPI GOOGLE. MALHEUREUSEMENT LES THUMBNAILS ONT APPAREMENT DISPARUS
-     // Check à volumeInfo.imageLinks.thumbnail <<=== truc récupéré sur le net. sinon check l'adresse suivante : https://developers.google.com/books/docs/v1/reference/volumes
-        {/* <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
-      ))}*/}
     </div>
   );
 }
