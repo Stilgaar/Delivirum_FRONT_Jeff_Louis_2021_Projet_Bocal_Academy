@@ -44,7 +44,7 @@ function NewCrit({auteur, livre, resume, thumbnail, isSearch, user}) {
 
     console.log(click)
 
-    fetch("http://localhost:5000/posts", {
+    fetch("https://delivriumback.osc-fr1.scalingo.io/posts", {
       method: "POST",
       body: JSON.stringify(click),
       headers: {

@@ -38,7 +38,7 @@ function Comment({ currentPost }) {
         // curent post nous vient du parents : comme ça il toppe l'_id sur chaque <Critic <Comment /> />
         let envoyerComm = { comment, currentUser, currentPost }
 
-        fetch("http://localhost:5000/comment", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/comment", {
             method: "POST",
             body: JSON.stringify(envoyerComm),
             headers: {
@@ -52,7 +52,7 @@ function Comment({ currentPost }) {
     function refrech() {
 
         let envoyerComm = { currentPost }
-        fetch("http://localhost:5000/comment/get", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/comment/get", {
             method: "POST",
             body: JSON.stringify(envoyerComm),
             headers: {
@@ -69,7 +69,7 @@ function Comment({ currentPost }) {
     // nous utilisons des useEffects, sinon la page tournerait en boucle, jusqu'à fonte du process
 
     useEffect(() => {
-        fetch("http://localhost:5000/users/info", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/users/info", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,

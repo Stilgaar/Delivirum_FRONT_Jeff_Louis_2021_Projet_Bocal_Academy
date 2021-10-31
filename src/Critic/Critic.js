@@ -15,7 +15,7 @@ function Critic({refrech}) {
     // ouais, rappellez vous, dans le composant NewCrit.js, nous récuperions le pseudo, que nous injections dans la deuxième collection de la BD
 
     useEffect(() => {
-        fetch("http://localhost:5000/posts/critic", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/posts/critic", {
         })
             .then((res) => res.json())
             .then((criticList) => {

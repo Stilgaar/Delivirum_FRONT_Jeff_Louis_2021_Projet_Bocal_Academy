@@ -17,7 +17,7 @@ function NewNews({ admin, user }) {
 
         let click = { adminPost, adminTitle, currentUser }
 
-        fetch("http://localhost:5000/posts/admin", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/posts/admin", {
             method: "POST",
             body: JSON.stringify(click),
             headers: {

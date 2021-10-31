@@ -37,7 +37,7 @@ function App() {
   function getInfos() {
     let token = localStorage.getItem("token");
 
-    return fetch("http://localhost:5000/users/id", {
+    return fetch("https://delivriumback.osc-fr1.scalingo.io/users/id", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ function App() {
   let currenttoken = localStorage.getItem("token")
 
 function refrech() {
-  fetch("http://localhost:5000/users/info", {
+  fetch("https://delivriumback.osc-fr1.scalingo.io/users/info", {
     headers: { Authorization: `Bearer ${currenttoken}` }
   })
     .then((res) => res.json())

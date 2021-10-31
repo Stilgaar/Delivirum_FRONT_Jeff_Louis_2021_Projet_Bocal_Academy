@@ -5,13 +5,13 @@ function Admin() {
 
     const [allUsers, setAllUsers] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/users/all", {}).then((res) => res.json()).then((Users) => {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/users/all", {}).then((res) => res.json()).then((Users) => {
             setAllUsers(Users);
         })
     }, [])
 
     const handleBan = (email) => {
-        fetch("http://localhost:5000/users/softban", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/users/softban", {
             method: "PATCH",
             body: JSON.stringify({ email: email }),
             headers: {
@@ -23,7 +23,7 @@ function Admin() {
 
 
     const handleAdmin = (email) => {
-        fetch("http://localhost:5000/users/admin", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/users/admin", {
             method: "PATCH",
             body: JSON.stringify({ email: email }),
             headers: {
