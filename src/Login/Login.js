@@ -26,7 +26,7 @@ function Login({ isLog, setIsLog, token }) {
     // nous pourrions rajouter des erreurs et des popsup jolis si la personne s'est trompé dans le mpd ou dans son pseudo ou les deux
     // proposer aussi un lien pour se crée un compte le cas échéant.
 
-    fetch("http://localhost:5000/users/login", {
+    fetch("https://delivriumback.osc-fr1.scalingo.io/users/login", {
       method: "POST",
       body: JSON.stringify(submit),
       headers: {

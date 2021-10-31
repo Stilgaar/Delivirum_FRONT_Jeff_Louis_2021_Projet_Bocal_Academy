@@ -19,7 +19,7 @@ function New({ admin, user }) {
     const [postsList, setPostsList] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/posts/critic", {
+        fetch("https://delivriumback.osc-fr1.scalingo.io/posts/critic", {
         })
             .then((res) => res.json())
             .then((criticList) => {
