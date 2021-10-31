@@ -4,7 +4,7 @@
     height: 20rem;
     width: 40rem;
     border: 2px solid black;
-    position: absolute; 
+    position: relative; 
     top: 8rem; 
     left: 15rem;
 }
@@ -13,8 +13,8 @@
     height: 40rem;
     width: 25rem;
     border: 2px solid black; 
-    position: absolute; 
-    top: 6rem;
+    position: relative; 
+    bottom: 15rem;
     left: 18rem;  
 }
 
@@ -31,5 +31,7 @@ left: 23rem;
 }
 
 .splash {
-    z-index: 1;
+    position: absolute;
+    height: 80%;
+    margin: auto;
 }

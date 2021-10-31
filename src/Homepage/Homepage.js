@@ -34,7 +34,7 @@ import "./Homepage.css";
 // l'implenter dans comments (la BD)
 // compte la longueur de l'array de like
 
-function Homepage({ isLog, setIsLog }) {
+function Homepage({ isLog, setIsLog, refrech}) {
 
   // la HomePage est la page ou les gens arrivent lorsqu'ils sont connectés.
   // c'est aussi la page vers laquelle ils sont redirigés une fois qu'ils ont envoyé une critique. 
@@ -42,7 +42,7 @@ function Homepage({ isLog, setIsLog }) {
 
   return (
     <div className="critAndCom">
-      {isLog && <Critic />}
+      {isLog && <Critic refrech={refrech} />}
     </div>
   );
 }

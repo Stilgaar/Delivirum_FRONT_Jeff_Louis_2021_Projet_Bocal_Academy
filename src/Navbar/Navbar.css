@@ -2,6 +2,8 @@
 background: linear-gradient(45deg, #8e3fc4, #4c0080);
 height: 2.5em;
 border-bottom:solid 1px #2d0e42;
+margin-bottom: 1%;
+z-index: 800;
 }
 
 .navElement {
@@ -14,11 +16,34 @@ border-bottom:solid 1px #2d0e42;
 } 
 
 .navText2 {
+    display: block;
     margin-left: 2rem;
     background: linear-gradient(45deg, #4c0080, #8e3fc4);
     box-shadow: 5px 5px 3px #2d0e42;
     border: 0.025rem solid #1f0530;
     border-radius: 10px;
-    padding: 0.4rem;
-    
+    padding: 0.4rem;  
 }
+
+.navbar-light .navbar-toggler {
+    color: ivory;
+
+}   
+    
+.navADMIN {
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    text-decoration: none;
+    display: block;
+    margin-left: 2rem;
+    background: linear-gradient(45deg, #f10014, #630a0a);
+    box-shadow: 5px 5px 3px #2d0e42;
+    border: 0.025rem solid #1f0530;
+    border-radius: 10px;
+    padding: 0.4rem;  
+}
+
+.navText, .navText2, .navADMINtext {
+    color: ivory;
+} 

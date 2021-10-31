@@ -38,7 +38,8 @@ function Login({ isLog, setIsLog, token }) {
       .then((json) => {
         localStorage.setItem("token", json.token); // <--- entrée du token dans le localStorage pour pouvoir le récup dans les autres composants
         setIsLog(true);
-        history.push("/"); // on est automatiquement renvoyé sur (."/") c'est globalemetn la même page que la page de login, sauf que la l'affichage ternaire rentre en compte
+        // on est automatiquement renvoyé sur (."/") c'est globalemetn la même page que la page de login, sauf que la l'affichage ternaire rentre en compte
+        history.push("/");
       })
       .catch((err) => console.log(err));
   }

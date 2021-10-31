@@ -4,7 +4,7 @@ import { FloatingLabel, Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import NewCrit from "../NewCrit/NewCrit";
 
-function Search() {
+function Search({user, admin}) {
 
     // COTE RECHERCHE DE LIVRES !! // TODO : à foutre dans son propre composant. 
 
@@ -130,7 +130,7 @@ function Search() {
                 </div>
             }
         
-        <NewCrit auteur={auteur} livre={livre} resume={resume} thumbnail={thumbnail} isSearch={isSearch}/>
+        <NewCrit auteur={auteur} livre={livre} resume={resume} thumbnail={thumbnail} isSearch={isSearch} user={user} admin={admin}/>
         </div>
 
 

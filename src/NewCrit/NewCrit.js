@@ -8,7 +8,6 @@ import "./NewCrit.css";
 import { FloatingLabel, Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Search from '../Search/Search';
 
 // dans cet element nous alons chopper l'user d'un côté via son token
 // ce sera décodé dans le back pour qu'on puisse récupéré son pseudo
@@ -16,14 +15,13 @@ import Search from '../Search/Search';
 // mais le currentUser/user.pseudo va aussi nous servir à l'injecter dans le commentaire. 
 // comme ça chaque commentaire sera lié au pseudo et nous pourrons plus facilement sortir les informations en cas de besoin
 
-function NewCrit({auteur, livre, resume, thumbnail, isSearch}) {
+function NewCrit({auteur, livre, resume, thumbnail, isSearch, user}) {
 
   // récuperation des données dans le formulaire
   const [title, setTitle] = useState();
   const [critic, setCritic] = useState();
 
   // récuperation d'utilisateur et son token pour lui dire coucou
-  const [user, setUser] = useState({ pseudo: "", email: "" });
   let currentUser = user.pseudo
   let token = localStorage.getItem("token")
 
@@ -35,9 +33,16 @@ function NewCrit({auteur, livre, resume, thumbnail, isSearch}) {
   // notez qu'il serait utile de faire de même lors de la création de commentaire au niveau du CurrentUser.
   // notez aussi que c'est dans le même coin de la BD donc ça va être plutôt facile à mettre en place 
 
-  function handleClick() {
 
+  // dernièrement j'ai rajouté le auteur, livre, resume et thumbnail que l'on récupér de l'API google. 
+  // pour l'instant ça me parrait la meilleure solution pour les rendre de l'autre côté
+  // faudra évidement l'implanter dans les modèles de l'autre côté. 
+  
+  function handleClick() {
+ 
     let click = { title, critic, currentUser, auteur, livre, resume, thumbnail }
+
+    console.log(click)
 
     fetch("http://localhost:5000/posts", {
       method: "POST",
@@ -48,21 +53,11 @@ function NewCrit({auteur, livre, resume, thumbnail, isSearch}) {
       },
     })
       .then((res) => res.json())
-      .then((json) => {
+      .then((json) => 
+      {console.log("console.log du json du fetch", json)
         history.push("/Homepage")
       });
   }
-
-  // Le useEffect pour récupérer le nom de l'utilisateur.
-  useEffect(() => {
-    fetch("http://localhost:5000/users/info", {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setUser(res)
-      })
-  }, [])
 
   // la fonction sexy de jeremy, vous devriez vraiment l'écire sur un postit, même Antonin l'à grave trop kiffé
   // je vous invite à prendre cinq minutes pour la comprendre, franchement vous allez aimer

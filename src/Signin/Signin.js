@@ -41,14 +41,19 @@ function Signin() {
         'Content-Type': 'application/json'
       }
     })
+
       // ces lignes c'est comme le headers, c'est comme ça et puis c'est tout
       // il attends la réponse du serveur. Type si l'émail et ou le pseudo n'a pas encore été utilisé. 
       // si vous voulez faire apparaître des message d'erreurs (du au pseudo ou à l'émail déjà utilisé ce sera ici)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        history.push("/Login")
-      });
+      .then(res => {
+        if(res.status === 402)
+        {alert("Mail déjà utilisé")}
+        if(res.status === 401)
+        {alert("Il faut remplir tous les champs")}
+        if(res.status === 400) 
+        {alert("Les mots de passe ne correspondent pas")}
+        else {history.push("./Login")}
+      })  
   }
 
   //Fonction Callback sur les inputs du formulaire

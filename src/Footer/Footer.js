@@ -7,7 +7,7 @@ function Footer() {
 <div id="main">
         <footer className="footerBox">
             <div>
-                <div className="texteFoot">Louis &#x00026; Jeff Pour le 
+                <div className="texteFoot">Loïs &#x00026; Jeff Pour le 
                     Bocal Academy &#x0003C;3
                 </div>
             </div>

@@ -102,7 +102,7 @@ function Comment({ currentPost }) {
             {newComment.map((item) =>
                 <div className="commentList">
                     <div>
-                        <div className="commentaire"> <span className="currentUser">{item.currentUser}</span> à dit ça : {item.comment}</div>
+                        <div className="commentaire"> <span className="currentUser">{item.currentUser}: </span>{item.comment}</div>
                     </div>
                 </div>
             )}
