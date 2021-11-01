@@ -33,7 +33,7 @@ function New({ admin, user }) {
             <h3 className="titreNews">GOOD NEWS EVERYONE !!</h3>
             <div>
                 {postsList.map((item) =>
-                    <div>
+                    <div className="newsBox">
                         <div>{item.adminTitle}</div>
 
                         <div>{item.adminPost}</div>

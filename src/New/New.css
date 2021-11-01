@@ -5,3 +5,10 @@
     text-align: center;
     
 }
+
+.newsBox {
+
+    box-shadow: 2px 1px 3px #4c0080;
+    border-radius: 10px;
+
+}
