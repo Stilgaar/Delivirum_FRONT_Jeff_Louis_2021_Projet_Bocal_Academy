@@ -80,8 +80,8 @@ function NewCrit({auteur, livre, resume, thumbnail, isSearch, user}) {
         </FloatingLabel>
 {isSearch &&
 <div>
-        <div className="ladiv"> Tu vas critiquer {livre} de {auteur}</div>
-        <div className="ladiv"> Petit résumé : {resume} </div>
+        <div className="ladiv2"> Tu vas critiquer {livre} de {auteur}</div>
+        <div className="ladiv2"> Petit résumé : {resume} </div>
 </div>}
         <div className="ladiv">Salut {user.pseudo}, ton commentaire sera visible par les autres `=)` </div>
         <Button className="boutonNewCrit" onClick={() => handleClick()}>
